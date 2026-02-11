@@ -504,14 +504,15 @@ const BEHAVIORS = {
 };
 
 const SECTORS = [
-  { id: "front",      label: "Front",    angle: 0   },
-  { id: "frontRight", label: "Front →",  angle: 45  },
-  { id: "right",      label: "Right",    angle: 90  },
-  { id: "rearRight",  label: "Rear →",   angle: 135 },
-  { id: "rear",       label: "Rear",     angle: 180 },
-  { id: "rearLeft",   label: "← Rear",   angle: 225 },
-  { id: "left",       label: "Left",     angle: 270 },
-  { id: "frontLeft",  label: "← Front",  angle: 315 },
+  { id: "bullseye", label: "Bullseye", angle: 0},
+  { id: "arcRight", label: "Arc →", angle: 40},
+  { id: "rightSideFront", label: "Right ↑", angle: 80},
+  { id: "rightSideRear", label: "Right ↓", angle: 120},
+  { id: "rearRight", label: "Rear →", angle: 160},
+  { id: "rearLeft", label: "← Rear", angle: 200},
+  { id: "leftSiderear", label: "↓ Left", angle: 240},
+  { id: "leftSidefront", label: "↑ Left", angle: 280},
+  { id: "arcLeft", label: "← Arc", angle: 320},
 ];
 
 // ═══════════════════════════════════════════════════════════════════
@@ -844,9 +845,7 @@ function executeRoll() {
   const die = rollD6();
   let maneuver;
 
-  if (state.selectedRange === "stressed") {
-    maneuver = ship.stressedManeuvers[die - 1];
-  } else if (state.selectedSector && state.selectedRange) {
+ if (state.selectedSector && state.selectedRange) {
     maneuver = ship.maneuvers[state.selectedSector]?.[state.selectedRange]?.[die - 1];
   } else {
     return;

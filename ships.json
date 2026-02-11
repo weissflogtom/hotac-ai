@@ -5,48 +5,63 @@
     "icon": "F",
     "shipClass": "tielnfighter",
     "maneuvers": {
-      "front": {
-        "close": ["1B→", "2S", "2S", "3S", "1B←", "4K"],
-        "mid":   ["2B→", "3S", "2S", "3S", "2B←", "3S"],
-        "far":   ["3B→", "4S", "3S", "5S", "3B←", "4S"]
+      "bullseye": {
+        "close": ["4K", "4K", "2B←", "2B→", "2S", "2S"],
+        "mid":   ["2S", "2S", "2S", "2S", "3S", "3S"],
+        "far":   ["4S", "5S", "5S", "5S", "5S", "5S"],
+        "stressed": ["2B←", "2B←", "2B→", "2B→", "2S", "2S"]
       },
-      "frontRight": {
-        "close": ["1T→", "2B→", "1B→", "2T→", "2S", "4K"],
-        "mid":   ["2T→", "3B→", "2B→", "3B→", "3S", "2B→"],
-        "far":   ["2B→", "4S", "3B→", "5S", "3S", "3B→"]
+      "arcRight": {
+        "close": ["4K", "4K", "1T→", "1T→", "2B→", "2B→"],
+        "mid":   ["2B→", "2B→", "2B→", "3B→", "3B→", "3S"],
+        "far":   ["3B→", "3B→", "3B→", "3B→", "4S", "4S"],
+        "stressed": ["2B→", "2B→", "2B→", "2S", "2S", "3S"]
       },
-      "right": {
-        "close": ["2T→", "1T→", "2T→", "1T→", "2T→", "3T→"],
-        "mid":   ["3T→", "2T→", "2T→", "3B→", "2T→", "2B→"],
-        "far":   ["2T→", "3B→", "2B→", "3S", "3B→", "2T→"]
+      "arcLeft": {
+        "close": ["4K", "4K", "1T→", "1T→", "2B←", "2B←"],
+        "mid":   ["2B←", "2B←", "2B←", "3B←", "3B←", "3S"],
+        "far":   ["3B←", "3B←", "3B←", "3B←", "4S", "4S"],
+        "stressed": ["2B←", "2B←", "2B←", "2S", "2S", "3S"]
       },
+      "rightSideFront": {
+        "close": ["4K", "1T→", "1T→", "2T→", "2T→", "2T→"],
+        "mid":   ["1T→", "2T→", "2B→", "2B→", "3T→", "3T→"],
+        "far":   ["2T→", "2T→", "2T→", "3T→", "3T→", "3T→"],
+        "stressed": ["1T→", "2B→", "2B→", "2B→", "2B→", "2B→"]
+      },
+      "leftSidefront": {
+        "close": ["4K", "1T←", "1T←", "2T←", "2T←", "2T←"],
+        "mid":   ["1T←", "2T←", "2B←", "2B←", "3T←", "3T←"],
+        "far":   ["2T←", "2T←", "2T←", "3T←", "3T←", "3T←"],
+        "stressed": ["1T←", "2B←", "2B←", "2B←", "2B←", "2B←"]
+      },      
+      "rightSideRear": {
+        "close": ["3K", "1T→", "1T→", "1T→", "2T→", "2T→"],
+        "mid":   ["3K", "3K", "1T→", "1T→", "2T→", "2T→"],
+        "far":   ["3K", "3K", "3K", "1T→", "1T→", "1T→"],
+        "stressed": ["1T→", "2T→", "2B→", "2B→", "2B→"]
+      },      
+      "leftSiderear": {
+        "close": ["3K", "1T←", "1T←", "1T←", "2T←", "2T←"],
+        "mid":   ["3K", "3K", "1T←", "1T←", "2T←", "2T←"],
+        "far":   ["3K", "3K", "3K", "1T←", "1T←", "1T←"],
+        "stressed": ["1T←", "2T←", "2B←", "2B←", "2B←"]
+      },      
       "rearRight": {
-        "close": ["2T→", "3T→", "4K", "2T→", "3T→", "4K"],
-        "mid":   ["3T→", "2T→", "4K", "3T→", "2T→", "4K"],
-        "far":   ["3T→", "2T→", "3T→", "2T→", "3B→", "4K"]
-      },
-      "rear": {
-        "close": ["4K", "4K", "3T→", "4K", "4K", "3T←"],
-        "mid":   ["4K", "3T→", "4K", "4K", "3T←", "4K"],
-        "far":   ["4K", "2T→", "3T→", "4K", "2T←", "3T←"]
-      },
+        "close": ["4K", "4K", "3K", "3K", "2T→", "2T→"],
+        "mid":   ["3K", "3K", "1T→", "3T→", "3T→", "3T→"],
+        "far":   ["3K", "3K", "3K", "3K", "1T→", "1T→"],
+        "stressed": ["2B1", "2B1", "2B1", "2B1", "2B1", "3T→"]
+      },      
       "rearLeft": {
-        "close": ["2T←", "3T←", "4K", "2T←", "3T←", "4K"],
-        "mid":   ["3T←", "2T←", "4K", "3T←", "2T←", "4K"],
-        "far":   ["3T←", "2T←", "3T←", "2T←", "3B←", "4K"]
-      },
-      "left": {
-        "close": ["2T←", "1T←", "2T←", "1T←", "2T←", "3T←"],
-        "mid":   ["3T←", "2T←", "2T←", "3B←", "2T←", "2B←"],
-        "far":   ["2T←", "3B←", "2B←", "3S", "3B←", "2T←"]
-      },
-      "frontLeft": {
-        "close": ["1T←", "2B←", "1B←", "2T←", "2S", "4K"],
-        "mid":   ["2T←", "3B←", "2B←", "3B←", "3S", "2B←"],
-        "far":   ["2B←", "4S", "3B←", "5S", "3S", "3B←"]
+        "close": ["4K", "4K", "3K", "3K", "2T←", "2T←"],
+        "mid":   ["3K", "3K", "1T←", "3T←", "3T←", "3T←"],
+        "far":   ["3K", "3K", "3K", "3K", "1T←", "1T←"],
+        "stressed": ["2B1", "2B1", "2B1", "2B1", "2B1", "3T←"]
       }
+      
+
     },
-    "stressedManeuvers": ["2S", "2B→", "2S", "2S", "2B←", "2S"],
     "actions": ["Barrel Roll to avoid arc & get shot", "Barrel Roll to get shot", "Evade if in arc", "Focus"],
     "targetPriority": ["Closest enemy ship", "If tie: lowest agility", "If tie: most damage cards"]
   },
@@ -59,45 +74,52 @@
       "front": {
         "close": ["1B→", "2S", "2S", "3S", "1B←", "3K"],
         "mid":   ["2B→", "3S", "2S", "3S", "2B←", "4S"],
-        "far":   ["3B→", "5S", "4S", "5S", "3B←", "4S"]
+        "far":   ["3B→", "5S", "4S", "5S", "3B←", "4S"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
       },
       "frontRight": {
         "close": ["1T→", "2B→", "1B→", "2T→", "2S", "3K"],
         "mid":   ["2T→", "3B→", "2B→", "3B→", "3S", "2B→"],
-        "far":   ["2B→", "5S", "3B→", "4S", "3S", "3B→"]
+        "far":   ["2B→", "5S", "3B→", "4S", "3S", "3B→"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
       },
       "right": {
         "close": ["2T→", "1T→", "2T→", "1T→", "3T→", "3T→"],
         "mid":   ["3T→", "2T→", "2T→", "3B→", "2T→", "2B→"],
-        "far":   ["2T→", "3B→", "2B→", "3S", "3B→", "2T→"]
+        "far":   ["2T→", "3B→", "2B→", "3S", "3B→", "2T→"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
       },
       "rearRight": {
         "close": ["3SR→", "3T→", "3SR→", "2T→", "3T→", "3K"],
         "mid":   ["3T→", "3SR→", "3K", "3T→", "2T→", "3SR→"],
-        "far":   ["3T→", "2T→", "3T→", "2T→", "3B→", "3K"]
+        "far":   ["3T→", "2T→", "3T→", "2T→", "3B→", "3K"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
       },
       "rear": {
         "close": ["3K", "3K", "3SR→", "3K", "3K", "3SR←"],
         "mid":   ["3K", "3T→", "3K", "3K", "3T←", "3K"],
-        "far":   ["3K", "2T→", "3T→", "3K", "2T←", "3T←"]
+        "far":   ["3K", "2T→", "3T→", "3K", "2T←", "3T←"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
       },
       "rearLeft": {
         "close": ["3SR←", "3T←", "3SR←", "2T←", "3T←", "3K"],
         "mid":   ["3T←", "3SR←", "3K", "3T←", "2T←", "3SR←"],
-        "far":   ["3T←", "2T←", "3T←", "2T←", "3B←", "3K"]
+        "far":   ["3T←", "2T←", "3T←", "2T←", "3B←", "3K"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
       },
       "left": {
         "close": ["2T←", "1T←", "2T←", "1T←", "3T←", "3T←"],
         "mid":   ["3T←", "2T←", "2T←", "3B←", "2T←", "2B←"],
-        "far":   ["2T←", "3B←", "2B←", "3S", "3B←", "2T←"]
+        "far":   ["2T←", "3B←", "2B←", "3S", "3B←", "2T←"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
       },
       "frontLeft": {
         "close": ["1T←", "2B←", "1B←", "2T←", "2S", "3K"],
         "mid":   ["2T←", "3B←", "2B←", "3B←", "3S", "2B←"],
-        "far":   ["2B←", "5S", "3B←", "4S", "3S", "3B←"]
+        "far":   ["2B←", "5S", "3B←", "4S", "3S", "3B←"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
       }
     },
-    "stressedManeuvers": ["2S", "2B→", "2S", "2S", "2B←", "2S"],
     "actions": ["Boost+BR to avoid arc & get shot", "Barrel Roll to avoid arc & get shot", "Barrel Roll to get shot", "Evade if in arc", "Focus"],
     "targetPriority": ["Closest enemy ship", "If tie: lowest agility", "If tie: most damage cards"]
   },
@@ -110,45 +132,52 @@
       "front": {
         "close": ["1B→", "2S", "1S", "2S", "1B←", "3K"],
         "mid":   ["2B→", "3S", "2S", "3S", "2B←", "2S"],
-        "far":   ["2B→", "3S", "3S", "4S", "2B←", "3S"]
+        "far":   ["2B→", "3S", "3S", "4S", "2B←", "3S"],
+        "stressed": ["2S", "1B→", "2S", "1S", "1B←", "2S"]
       },
       "frontRight": {
         "close": ["1T→", "2B→", "1B→", "2T→", "1S", "3K"],
         "mid":   ["2T→", "2B→", "2B→", "3B→", "2S", "2B→"],
-        "far":   ["2B→", "3S", "2B→", "4S", "3S", "3B→"]
+        "far":   ["2B→", "3S", "2B→", "4S", "3S", "3B→"],
+        "stressed": ["2S", "1B→", "2S", "1S", "1B←", "2S"]
       },
       "right": {
         "close": ["2T→", "1T→", "1T→", "1T→", "2T→", "2T→"],
         "mid":   ["2T→", "2T→", "1T→", "2B→", "2T→", "2B→"],
-        "far":   ["2T→", "2B→", "2B→", "3S", "2B→", "2T→"]
+        "far":   ["2T→", "2B→", "2B→", "3S", "2B→", "2T→"],
+        "stressed": ["2S", "1B→", "2S", "1S", "1B←", "2S"]
       },
       "rearRight": {
         "close": ["2T→", "2T→", "3K", "1T→", "2T→", "3K"],
         "mid":   ["2T→", "2T→", "3K", "2T→", "1T→", "3K"],
-        "far":   ["2T→", "1T→", "2T→", "2T→", "2B→", "3K"]
+        "far":   ["2T→", "1T→", "2T→", "2T→", "2B→", "3K"],
+        "stressed": ["2S", "1B→", "2S", "1S", "1B←", "2S"]
       },
       "rear": {
         "close": ["3K", "3K", "2T→", "3K", "3K", "2T←"],
         "mid":   ["3K", "2T→", "3K", "3K", "2T←", "3K"],
-        "far":   ["3K", "2T→", "2T→", "3K", "2T←", "2T←"]
+        "far":   ["3K", "2T→", "2T→", "3K", "2T←", "2T←"],
+        "stressed": ["2S", "1B→", "2S", "1S", "1B←", "2S"]
       },
       "rearLeft": {
         "close": ["2T←", "2T←", "3K", "1T←", "2T←", "3K"],
         "mid":   ["2T←", "2T←", "3K", "2T←", "1T←", "3K"],
-        "far":   ["2T←", "1T←", "2T←", "2T←", "2B←", "3K"]
+        "far":   ["2T←", "1T←", "2T←", "2T←", "2B←", "3K"],
+        "stressed": ["2S", "1B→", "2S", "1S", "1B←", "2S"]
       },
       "left": {
         "close": ["2T←", "1T←", "1T←", "1T←", "2T←", "2T←"],
         "mid":   ["2T←", "2T←", "1T←", "2B←", "2T←", "2B←"],
-        "far":   ["2T←", "2B←", "2B←", "3S", "2B←", "2T←"]
+        "far":   ["2T←", "2B←", "2B←", "3S", "2B←", "2T←"],
+        "stressed": ["2S", "1B→", "2S", "1S", "1B←", "2S"]
       },
       "frontLeft": {
         "close": ["1T←", "2B←", "1B←", "2T←", "1S", "3K"],
         "mid":   ["2T←", "2B←", "2B←", "3B←", "2S", "2B←"],
-        "far":   ["2B←", "3S", "2B←", "4S", "3S", "3B←"]
+        "far":   ["2B←", "3S", "2B←", "4S", "3S", "3B←"],
+        "stressed": ["2S", "1B→", "2S", "1S", "1B←", "2S"]
       }
     },
-    "stressedManeuvers": ["2S", "1B→", "2S", "1S", "1B←", "2S"],
     "actions": ["Barrel Roll to get shot", "Target Lock if in range", "Focus"],
     "targetPriority": ["Closest enemy ship", "If tie: lowest agility", "If tie: most damage cards"]
   },
@@ -161,45 +190,52 @@
       "front": {
         "close": ["1B→", "2S", "2S", "3S", "1B←", "4K"],
         "mid":   ["2B→", "3S", "2S", "4S", "2B←", "3S"],
-        "far":   ["3B→", "4S", "3S", "5S", "3B←", "4S"]
+        "far":   ["3B→", "4S", "3S", "5S", "3B←", "4S"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
       },
       "frontRight": {
         "close": ["1T→", "2B→", "1B→", "2T→", "2S", "4K"],
         "mid":   ["2T→", "3B→", "2B→", "3B→", "3S", "2B→"],
-        "far":   ["2B→", "4S", "3B→", "5S", "3S", "3B→"]
+        "far":   ["2B→", "4S", "3B→", "5S", "3S", "3B→"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
       },
       "right": {
         "close": ["2T→", "1T→", "2T→", "1T→", "2T→", "3T→"],
         "mid":   ["3T→", "2T→", "2T→", "3B→", "2T→", "2B→"],
-        "far":   ["2T→", "3B→", "2B→", "3S", "3B→", "2T→"]
+        "far":   ["2T→", "3B→", "2B→", "3S", "3B→", "2T→"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
       },
       "rearRight": {
         "close": ["2T→", "3T→", "4K", "2T→", "3T→", "4K"],
         "mid":   ["3T→", "2T→", "4K", "3T→", "2T→", "4K"],
-        "far":   ["3T→", "2T→", "3T→", "2T→", "3B→", "4K"]
+        "far":   ["3T→", "2T→", "3T→", "2T→", "3B→", "4K"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
       },
       "rear": {
         "close": ["4K", "4K", "3T→", "4K", "4K", "3T←"],
         "mid":   ["4K", "3T→", "4K", "4K", "3T←", "4K"],
-        "far":   ["4K", "2T→", "3T→", "4K", "2T←", "3T←"]
+        "far":   ["4K", "2T→", "3T→", "4K", "2T←", "3T←"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
       },
       "rearLeft": {
         "close": ["2T←", "3T←", "4K", "2T←", "3T←", "4K"],
         "mid":   ["3T←", "2T←", "4K", "3T←", "2T←", "4K"],
-        "far":   ["3T←", "2T←", "3T←", "2T←", "3B←", "4K"]
+        "far":   ["3T←", "2T←", "3T←", "2T←", "3B←", "4K"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
       },
       "left": {
         "close": ["2T←", "1T←", "2T←", "1T←", "2T←", "3T←"],
         "mid":   ["3T←", "2T←", "2T←", "3B←", "2T←", "2B←"],
-        "far":   ["2T←", "3B←", "2B←", "3S", "3B←", "2T←"]
+        "far":   ["2T←", "3B←", "2B←", "3S", "3B←", "2T←"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
       },
       "frontLeft": {
         "close": ["1T←", "2B←", "1B←", "2T←", "2S", "4K"],
         "mid":   ["2T←", "3B←", "2B←", "3B←", "3S", "2B←"],
-        "far":   ["2B←", "4S", "3B←", "5S", "3S", "3B←"]
+        "far":   ["2B←", "4S", "3B←", "5S", "3S", "3B←"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
       }
     },
-    "stressedManeuvers": ["2S", "2B→", "2S", "2S", "2B←", "2S"],
     "actions": ["Barrel Roll to avoid arc & get shot", "Target Lock if in range", "Focus"],
     "targetPriority": ["Closest enemy ship", "If tie: lowest agility", "If tie: most damage cards"]
   },
@@ -212,45 +248,52 @@
       "front": {
         "close": ["1B→", "2S", "2S", "3S", "1B←", "4K"],
         "mid":   ["2B→", "4S", "3S", "4S", "2B←", "3S"],
-        "far":   ["3B→", "5S", "4S", "5S", "3B←", "4S"]
+        "far":   ["3B→", "5S", "4S", "5S", "3B←", "4S"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "3S"]
       },
       "frontRight": {
         "close": ["1T→", "2B→", "1B→", "2T→", "2S", "4K"],
         "mid":   ["3T→", "3B→", "2B→", "3B→", "3S", "2B→"],
-        "far":   ["2B→", "5S", "3B→", "4S", "3S", "3B→"]
+        "far":   ["2B→", "5S", "3B→", "4S", "3S", "3B→"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "3S"]
       },
       "right": {
         "close": ["3T→", "1T→", "3T→", "1T→", "3T→", "3T→"],
         "mid":   ["3T→", "3T→", "2T→", "3B→", "3T→", "2B→"],
-        "far":   ["3T→", "3B→", "2B→", "3S", "3B→", "3T→"]
+        "far":   ["3T→", "3B→", "2B→", "3S", "3B→", "3T→"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "3S"]
       },
       "rearRight": {
         "close": ["3T→", "3T→", "4K", "3T→", "3T→", "4K"],
         "mid":   ["3T→", "3T→", "4K", "3T→", "3T→", "4K"],
-        "far":   ["3T→", "3T→", "3T→", "3T→", "3B→", "4K"]
+        "far":   ["3T→", "3T→", "3T→", "3T→", "3B→", "4K"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "3S"]
       },
       "rear": {
         "close": ["4K", "4K", "3T→", "4K", "4K", "3T←"],
         "mid":   ["4K", "3T→", "4K", "4K", "3T←", "4K"],
-        "far":   ["4K", "3T→", "3T→", "4K", "3T←", "3T←"]
+        "far":   ["4K", "3T→", "3T→", "4K", "3T←", "3T←"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "3S"]
       },
       "rearLeft": {
         "close": ["3T←", "3T←", "4K", "3T←", "3T←", "4K"],
         "mid":   ["3T←", "3T←", "4K", "3T←", "3T←", "4K"],
-        "far":   ["3T←", "3T←", "3T←", "3T←", "3B←", "4K"]
+        "far":   ["3T←", "3T←", "3T←", "3T←", "3B←", "4K"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "3S"]
       },
       "left": {
         "close": ["3T←", "1T←", "3T←", "1T←", "3T←", "3T←"],
         "mid":   ["3T←", "3T←", "2T←", "3B←", "3T←", "2B←"],
-        "far":   ["3T←", "3B←", "2B←", "3S", "3B←", "3T←"]
+        "far":   ["3T←", "3B←", "2B←", "3S", "3B←", "3T←"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "3S"]
       },
       "frontLeft": {
         "close": ["1T←", "2B←", "1B←", "2T←", "2S", "4K"],
         "mid":   ["3T←", "3B←", "2B←", "3B←", "3S", "2B←"],
-        "far":   ["2B←", "5S", "3B←", "4S", "3S", "3B←"]
+        "far":   ["2B←", "5S", "3B←", "4S", "3S", "3B←"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "3S"]
       }
     },
-    "stressedManeuvers": ["2S", "2B→", "2S", "2S", "2B←", "3S"],
     "actions": ["Full Throttle (free evade after 3-5 speed)", "Barrel Roll to avoid arc & get shot", "Target Lock if in range", "Evade if in arc", "Focus"],
     "targetPriority": ["Closest enemy ship", "If tie: lowest agility", "If tie: most damage cards"]
   },
@@ -263,45 +306,52 @@
       "front": {
         "close": ["1B→", "2S", "2S", "3S", "1B←", "4K"],
         "mid":   ["2B→", "3S", "2S", "3S", "2B←", "3S"],
-        "far":   ["3B→", "4S", "3S", "4S", "3B←", "4S"]
+        "far":   ["3B→", "4S", "3S", "4S", "3B←", "4S"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
       },
       "frontRight": {
         "close": ["1T→", "2B→", "1B→", "2T→", "2S", "4K"],
         "mid":   ["2T→", "3B→", "2B→", "3B→", "3S", "2B→"],
-        "far":   ["2B→", "4S", "3B→", "4S", "3S", "3B→"]
+        "far":   ["2B→", "4S", "3B→", "4S", "3S", "3B→"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
       },
       "right": {
         "close": ["2T→", "1T→", "2T→", "1T→", "2T→", "3T→"],
         "mid":   ["3T→", "2T→", "2T→", "3B→", "2T→", "2B→"],
-        "far":   ["2T→", "3B→", "2B→", "3S", "3B→", "2T→"]
+        "far":   ["2T→", "3B→", "2B→", "3S", "3B→", "2T→"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
       },
       "rearRight": {
         "close": ["2T→", "3T→", "4K", "2T→", "3T→", "4K"],
         "mid":   ["3T→", "2T→", "4K", "3T→", "2T→", "4K"],
-        "far":   ["3T→", "2T→", "3T→", "2T→", "3B→", "4K"]
+        "far":   ["3T→", "2T→", "3T→", "2T→", "3B→", "4K"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
       },
       "rear": {
         "close": ["4K", "4K", "3T→", "4K", "4K", "3T←"],
         "mid":   ["4K", "3T→", "4K", "4K", "3T←", "4K"],
-        "far":   ["4K", "2T→", "3T→", "4K", "2T←", "3T←"]
+        "far":   ["4K", "2T→", "3T→", "4K", "2T←", "3T←"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
       },
       "rearLeft": {
         "close": ["2T←", "3T←", "4K", "2T←", "3T←", "4K"],
         "mid":   ["3T←", "2T←", "4K", "3T←", "2T←", "4K"],
-        "far":   ["3T←", "2T←", "3T←", "2T←", "3B←", "4K"]
+        "far":   ["3T←", "2T←", "3T←", "2T←", "3B←", "4K"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
       },
       "left": {
         "close": ["2T←", "1T←", "2T←", "1T←", "2T←", "3T←"],
         "mid":   ["3T←", "2T←", "2T←", "3B←", "2T←", "2B←"],
-        "far":   ["2T←", "3B←", "2B←", "3S", "3B←", "2T←"]
+        "far":   ["2T←", "3B←", "2B←", "3S", "3B←", "2T←"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
       },
       "frontLeft": {
         "close": ["1T←", "2B←", "1B←", "2T←", "2S", "4K"],
         "mid":   ["2T←", "3B←", "2B←", "3B←", "3S", "2B←"],
-        "far":   ["2B←", "4S", "3B←", "4S", "3S", "3B←"]
+        "far":   ["2B←", "4S", "3B←", "4S", "3S", "3B←"],
+        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
       }
     },
-    "stressedManeuvers": ["2S", "2B→", "2S", "2S", "2B←", "2S"],
     "actions": ["Decloak before activation", "Barrel Roll to avoid arc & get shot", "Evade + Cloak (linked)", "Focus + Cloak (linked)"],
     "targetPriority": ["Closest enemy ship", "If tie: lowest agility", "If tie: most damage cards"]
   },
@@ -314,45 +364,52 @@
       "front": {
         "close": ["1B→", "1S", "1S", "2S", "1B←", "0S"],
         "mid":   ["1B→", "2S", "2S", "3S", "1B←", "2S"],
-        "far":   ["2B→", "3S", "2S", "3S", "2B←", "3S"]
+        "far":   ["2B→", "3S", "2S", "3S", "2B←", "3S"],
+        "stressed": ["1S", "1B→", "2S", "1S", "1B←", "0S"]
       },
       "frontRight": {
         "close": ["1T→", "1B→", "1B→", "1T→", "1S", "0S"],
         "mid":   ["1T→", "2B→", "1B→", "2B→", "2S", "1B→"],
-        "far":   ["1B→", "3S", "2B→", "3S", "2S", "2B→"]
+        "far":   ["1B→", "3S", "2B→", "3S", "2S", "2B→"],
+        "stressed": ["1S", "1B→", "2S", "1S", "1B←", "0S"]
       },
       "right": {
         "close": ["1T→", "1T→", "1T→", "1T→", "1T→", "2T→"],
         "mid":   ["2T→", "1T→", "1T→", "2B→", "1T→", "1B→"],
-        "far":   ["1T→", "2B→", "1B→", "2S", "2B→", "1T→"]
+        "far":   ["1T→", "2B→", "1B→", "2S", "2B→", "1T→"],
+        "stressed": ["1S", "1B→", "2S", "1S", "1B←", "0S"]
       },
       "rearRight": {
         "close": ["1T→", "2T→", "0S", "1T→", "2T→", "0S"],
         "mid":   ["2T→", "1T→", "0S", "2T→", "1T→", "0S"],
-        "far":   ["2T→", "1T→", "2T→", "1T→", "2B→", "0S"]
+        "far":   ["2T→", "1T→", "2T→", "1T→", "2B→", "0S"],
+        "stressed": ["1S", "1B→", "2S", "1S", "1B←", "0S"]
       },
       "rear": {
         "close": ["0S", "0S", "2T→", "0S", "0S", "2T←"],
         "mid":   ["0S", "2T→", "0S", "0S", "2T←", "0S"],
-        "far":   ["0S", "1T→", "2T→", "0S", "1T←", "2T←"]
+        "far":   ["0S", "1T→", "2T→", "0S", "1T←", "2T←"],
+        "stressed": ["1S", "1B→", "2S", "1S", "1B←", "0S"]
       },
       "rearLeft": {
         "close": ["1T←", "2T←", "0S", "1T←", "2T←", "0S"],
         "mid":   ["2T←", "1T←", "0S", "2T←", "1T←", "0S"],
-        "far":   ["2T←", "1T←", "2T←", "1T←", "2B←", "0S"]
+        "far":   ["2T←", "1T←", "2T←", "1T←", "2B←", "0S"],
+        "stressed": ["1S", "1B→", "2S", "1S", "1B←", "0S"]
       },
       "left": {
         "close": ["1T←", "1T←", "1T←", "1T←", "1T←", "2T←"],
         "mid":   ["2T←", "1T←", "1T←", "2B←", "1T←", "1B←"],
-        "far":   ["1T←", "2B←", "1B←", "2S", "2B←", "1T←"]
+        "far":   ["1T←", "2B←", "1B←", "2S", "2B←", "1T←"],
+        "stressed": ["1S", "1B→", "2S", "1S", "1B←", "0S"]
       },
       "frontLeft": {
         "close": ["1T←", "1B←", "1B←", "1T←", "1S", "0S"],
         "mid":   ["1T←", "2B←", "1B←", "2B←", "2S", "1B←"],
-        "far":   ["1B←", "3S", "2B←", "3S", "2S", "2B←"]
+        "far":   ["1B←", "3S", "2B←", "3S", "2S", "2B←"],
+        "stressed": ["1S", "1B→", "2S", "1S", "1B←", "0S"]
       }
     },
-    "stressedManeuvers": ["1S", "1B→", "2S", "1S", "1B←", "0S"],
     "actions": ["Reinforce (rear if enemies behind, else front)", "Target Lock if in range", "Focus"],
     "targetPriority": ["Closest enemy ship", "If tie: lowest agility", "If tie: most damage cards"]
   }
