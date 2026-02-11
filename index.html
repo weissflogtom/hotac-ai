@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>HotAC AI Command</title>
+<style>
+  /* ── X-Wing Miniatures Fonts (from geordanr/xwing-miniatures-font via jsDelivr CDN) ── */
+  @font-face {
+    font-family: 'xwing-miniatures-font';
+    src: url('https://cdn.jsdelivr.net/npm/xwing-miniatures-font@2.6.9/dist/xwing-miniatures.ttf') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  @font-face {
+    font-family: 'xwing-miniatures-ships';
+    src: url('https://cdn.jsdelivr.net/npm/xwing-miniatures-font@2.6.9/dist/xwing-miniatures-ships.ttf') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  .xwf { font-family: 'xwing-miniatures-font' !important; font-style: normal; font-weight: normal; speak: none; }
+  .xws { font-family: 'xwing-miniatures-ships' !important; font-style: normal; font-weight: normal; speak: none; }
+
+  *, *::before, *::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Courier New', monospace;
+    color: #aabbcc;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Starfield background ── */
+  #starfield {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 20% 50%, #0a1628 0%, #020810 50%, #000 100%);
+    z-index: 0; overflow: hidden;
+  }
+  .star {
+    position: absolute; border-radius: 50%;
+    animation: twinkle var(--dur) ease-in-out var(--delay) infinite alternate;
+  }
+
+  /* ── Scanline overlay ── */
+  #scanlines {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(transparent 0px, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+    z-index: 1; pointer-events: none;
+  }
+
+  /* ── Main container ── */
+  #app {
+    position: relative; z-index: 2;
+    max-width: 480px; margin: 0 auto;
+    padding: 20px 16px 60px;
+  }
+
+  /* ── Animations ── */
+  @keyframes twinkle { 0% { opacity: 0.2; } 100% { opacity: 1; } }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-in { animation: fadeIn 0.3s ease; }
+
+  /* ── Section labels ── */
+  .section-label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 3px;
+    color: #4a6fa5; margin-bottom: 12px; font-family: 'Courier New', monospace;
+  }
+
+  /* ── Ship selector grid ── */
+  #ship-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 8px;
+  }
+  .ship-btn {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px; padding: 10px 8px;
+    color: #8899aa; cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Courier New', monospace; font-size: 11px;
+    text-align: center; line-height: 1.3;
+  }
+  .ship-btn:active { transform: scale(0.97); }
+  .ship-btn.active {
+    background: linear-gradient(135deg, rgba(255,50,50,0.2), rgba(255,100,50,0.1));
+    border-color: rgba(255,80,60,0.6); color: #ff6644; font-weight: bold;
+  }
+  .ship-btn .icon { font-size: 20px; margin-bottom: 4px; }
+
+  /* ── Stats bar ── */
+  #stats-bar {
+    display: flex; gap: 16px; justify-content: center;
+    padding: 12px 0;
+  }
+  .stat-val {
+    font-size: 22px; font-weight: bold;
+    font-family: 'Courier New', monospace;
+  }
+  .stat-lbl {
+    font-size: 9px; text-transform: uppercase; letter-spacing: 2px;
+    color: #667788; font-family: 'Courier New', monospace;
+  }
+
+  /* ── Behavior mode selector ── */
+  #behavior-bar { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+  .behavior-btn {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px; padding: 8px 12px;
+    color: #778899; cursor: pointer;
+    font-family: 'Courier New', monospace; font-size: 10px;
+    transition: all 0.2s ease; text-align: center;
+    line-height: 1.3; min-width: 70px;
+  }
+  .behavior-btn:active { transform: scale(0.97); }
+  .behavior-btn.active {
+    background: linear-gradient(135deg, rgba(255,80,60,0.2), rgba(255,50,30,0.1));
+    border-color: rgba(255,80,60,0.5); color: #ff6644;
+  }
+  .behavior-btn .bicon { font-size: 16px; display: block; margin-bottom: 2px; }
+  .behavior-hint {
+    font-size: 10px; color: #556677; text-align: center;
+    font-family: 'Courier New', monospace; font-style: italic;
+    margin-top: 8px; line-height: 1.4;
+    min-height: 28px;
+  }
+
+  /* ── Bearing reticle ── */
+  #reticle-wrap {
+    position: relative; width: 280px; height: 280px; margin: 0 auto;
+  }
+  #reticle-svg { position: absolute; top: 0; left: 0; }
+  #reticle-center {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    font-size: 28px; color: #ff6644; z-index: 2;
+    text-shadow: 0 0 20px rgba(255,80,60,0.5);
+  }
+  .sector-btn {
+    position: absolute; transform: translate(-50%, -50%);
+    width: 52px; height: 52px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(100,140,180,0.12) 0%, rgba(50,80,120,0.05) 100%);
+    border: 1px solid rgba(100,150,200,0.2);
+    color: #6688aa; cursor: pointer;
+    transition: all 0.15s ease;
+    font-size: 9px; font-family: 'Courier New', monospace;
+    text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.1;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 4px; z-index: 3;
+  }
+  .sector-btn:active { transform: translate(-50%, -50%) scale(0.95); }
+  .sector-btn.active {
+    background: radial-gradient(circle, rgba(255,80,60,0.4) 0%, rgba(255,50,30,0.15) 100%);
+    border: 2px solid rgba(255,80,60,0.8); color: #ff8866;
+    box-shadow: 0 0 20px rgba(255,80,60,0.3);
+  }
+
+  /* ── Range buttons ── */
+  #range-bar { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+  .range-btn {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px; padding: 8px 14px;
+    color: #778899; cursor: pointer;
+    font-family: 'Courier New', monospace; font-size: 11px;
+    transition: all 0.2s ease;
+  }
+  .range-btn:active { transform: scale(0.97); }
+  .range-btn.active {
+    background: linear-gradient(135deg, rgba(255,170,50,0.2), rgba(255,120,30,0.1));
+    border-color: rgba(255,170,50,0.6); color: #ffaa44;
+  }
+  .range-btn.stressed.active {
+    background: linear-gradient(135deg, rgba(255,50,50,0.2), rgba(200,30,30,0.1));
+    border-color: rgba(255,50,50,0.5); color: #ff4444;
+  }
+
+  /* ── Maneuver result ── */
+  #result-panel {
+    text-align: center; padding: 20px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px; margin-top: 16px;
+  }
+  .die-box {
+    display: inline-flex; width: 42px; height: 42px;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border: 2px solid rgba(255,80,60,0.5);
+    border-radius: 8px; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: bold; color: #ff6644;
+    font-family: 'Courier New', monospace;
+    box-shadow: 0 0 15px rgba(255,80,60,0.2), inset 0 0 10px rgba(0,0,0,0.5);
+  }
+  #maneuver-emoji { font-size: 48px; margin-bottom: 4px; font-weight: bold; }
+  #maneuver-text {
+    font-size: 22px; font-weight: bold; color: #eef2f7;
+    font-family: 'Courier New', monospace; margin-bottom: 4px;
+  }
+  #maneuver-note {
+    font-size: 11px; color: #667788;
+    font-family: 'Courier New', monospace; margin-bottom: 16px;
+  }
+  #reroll-btn {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px; padding: 8px 16px;
+    color: #8899aa; cursor: pointer;
+    font-family: 'Courier New', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    transition: all 0.2s ease;
+  }
+  #reroll-btn:active { transform: scale(0.97); }
+  .reroll-hint {
+    font-size: 9px; color: #445566; margin-top: 6px;
+    font-family: 'Courier New', monospace; font-style: italic;
+  }
+
+  /* ── Info panels ── */
+  .info-panel {
+    padding: 16px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px; margin-bottom: 12px;
+  }
+  .info-panel .panel-label { margin-bottom: 12px; }
+  .priority-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .priority-row:last-child { border-bottom: none; }
+  .priority-num {
+    width: 22px; height: 22px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-family: 'Courier New', monospace; font-weight: bold;
+    flex-shrink: 0;
+  }
+  .priority-num.first {
+    background: rgba(255,80,60,0.2); border: 1px solid rgba(255,80,60,0.4); color: #ff6644;
+  }
+  .priority-num.other {
+    background: rgba(100,150,200,0.1); border: 1px solid rgba(100,150,200,0.2); color: #6688aa;
+  }
+  .priority-text {
+    font-size: 12px; font-family: 'Courier New', monospace;
+  }
+  .priority-text.first { color: #ccddee; }
+  .priority-text.other { color: #8899aa; }
+  .target-rule {
+    font-size: 12px; color: #8899aa;
+    font-family: 'Courier New', monospace; padding: 4px 0;
+  }
+
+  /* ── Quick reference panels ── */
+  .ref-panel.swerve {
+    padding: 16px; background: rgba(255,170,50,0.03);
+    border: 1px solid rgba(255,170,50,0.1); border-radius: 10px;
+  }
+  .ref-panel.swerve .panel-label { color: #aa8844; }
+  .ref-panel.stress {
+    padding: 12px 16px; background: rgba(255,50,50,0.04);
+    border: 1px solid rgba(255,50,50,0.1); border-radius: 10px;
+  }
+  .ref-body {
+    font-size: 11px; color: #8899aa;
+    font-family: 'Courier New', monospace; line-height: 1.6;
+  }
+  .ref-body .hl { color: #ffaa44; }
+  .ref-body.stress-body { font-size: 11px; color: #cc6666; line-height: 1.5; }
+
+  /* ── Toggle button ── */
+  #info-toggle {
+    background: none; border: 1px solid rgba(100,150,200,0.2);
+    border-radius: 4px; padding: 4px 12px;
+    color: #6688aa; cursor: pointer;
+    font-family: 'Courier New', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+
+  /* ── Header ── */
+  .header-sub {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 6px;
+    color: #4a6fa5; margin-bottom: 6px;
+  }
+  .header-title {
+    font-size: 24px; font-weight: bold;
+    background: linear-gradient(135deg, #ff6644, #ff8866, #ffaa88);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; margin: 0; letter-spacing: 2px;
+  }
+  .header-ver {
+    font-size: 9px; color: #445566; margin-top: 4px; letter-spacing: 2px;
+  }
+
+  /* ── Footer ── */
+  #footer {
+    text-align: center; margin-top: 40px; padding: 16px 0;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    font-size: 9px; color: #334455; letter-spacing: 1px; line-height: 1.8;
+  }
+
+  /* ── Utility ── */
+  .hidden { display: none !important; }
+  .text-center { text-align: center; }
+  .mb-16 { margin-bottom: 16px; }
+  .mb-20 { margin-bottom: 20px; }
+  .mb-24 { margin-bottom: 24px; }
+  .mt-20 { margin-top: 20px; }
+  .m-20-0 { margin: 20px 0; }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255,80,60,0.3); border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<!-- Background layers -->
+<div id="starfield"></div>
+<div id="scanlines"></div>
+
+<!-- App -->
+<div id="app">
+
+  <!-- Header -->
+  <div class="text-center mb-24">
+    <div class="header-sub">Heroes of the Aturi Cluster</div>
+    <h1 class="header-title">AI COMMAND</h1>
+    <div class="header-ver">IMPERIAL AI MOVEMENT ENGINE • v2.07</div>
+  </div>
+
+  <!-- Quick Reference Toggle -->
+  <div class="text-center mb-20">
+    <button id="info-toggle" onclick="toggleInfo()">Show Quick Reference</button>
+  </div>
+  <div id="info-panels" class="hidden mb-20 fade-in">
+    <div class="ref-panel swerve" style="margin-bottom:12px">
+      <div class="section-label panel-label">⚠ Swerve Rules</div>
+      <div class="ref-body">
+        If the maneuver would cause the AI ship to overlap an <span class="hl">obstacle</span>:
+        change bearing by 45° (bank↔turn, or straight↔bank), adjusting speed by 1 if needed to match
+        the ship's dial. If still overlapping, try the other direction. If nothing works, execute original move.
+      </div>
+    </div>
+    <div class="ref-panel stress">
+      <div class="ref-body stress-body">
+        <strong>Remember:</strong> AI ships do NOT gain stress from red maneuvers, but cannot take actions after one.
+        AI <em>can</em> gain stress from obstacles, red actions, or card effects.
+      </div>
+    </div>
+  </div>
+
+  <!-- Ship Selector -->
+  <div class="mb-24">
+    <div class="section-label">Select AI Ship</div>
+    <div id="ship-grid"></div>
+  </div>
+
+  <!-- Ship detail area (hidden until ship selected) -->
+  <div id="ship-detail" class="hidden fade-in">
+
+    <!-- Stats -->
+    <div id="stats-bar"></div>
+
+    <!-- Behavior mode -->
+    <div class="mb-16">
+      <div class="section-label text-center">AI Behavior</div>
+      <div id="behavior-bar">
+        <button class="behavior-btn active" data-behavior="attack" onclick="selectBehavior('attack')">
+          <span class="bicon">⚔</span>Attack
+        </button>
+        <button class="behavior-btn" data-behavior="strike" onclick="selectBehavior('strike')">
+          <span class="bicon">🎯</span>Strike
+        </button>
+        <button class="behavior-btn" data-behavior="escort" onclick="selectBehavior('escort')">
+          <span class="bicon">🛡</span>Escort
+        </button>
+        <button class="behavior-btn" data-behavior="flee" onclick="selectBehavior('flee')">
+          <span class="bicon">↗</span>Flee
+        </button>
+      </div>
+      <div class="behavior-hint" id="behavior-hint">Target the nearest player ship</div>
+    </div>
+
+    <!-- Bearing selector -->
+    <div class="m-20-0">
+      <div class="section-label text-center">Target Bearing</div>
+      <div id="reticle-wrap">
+        <svg id="reticle-svg" width="280" height="280">
+          <defs>
+            <radialGradient id="reticleGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="rgba(255,80,60,0.08)" />
+              <stop offset="100%" stop-color="transparent" />
+            </radialGradient>
+          </defs>
+          <circle cx="140" cy="140" r="130" fill="url(#reticleGlow)" stroke="rgba(255,80,60,0.15)" stroke-width="1" />
+          <circle cx="140" cy="140" r="90" fill="none" stroke="rgba(255,80,60,0.1)" stroke-width="0.5" />
+          <circle cx="140" cy="140" r="50" fill="none" stroke="rgba(255,80,60,0.1)" stroke-width="0.5" />
+          <line x1="140" y1="10" x2="140" y2="270" stroke="rgba(255,80,60,0.08)" stroke-width="0.5" />
+          <line x1="10" y1="140" x2="270" y2="140" stroke="rgba(255,80,60,0.08)" stroke-width="0.5" />
+          <line x1="47" y1="47" x2="233" y2="233" stroke="rgba(255,80,60,0.06)" stroke-width="0.5" />
+          <line x1="233" y1="47" x2="47" y2="233" stroke="rgba(255,80,60,0.06)" stroke-width="0.5" />
+        </svg>
+        <div id="reticle-center" class="xws">◇</div>
+        <!-- Sector buttons injected by JS -->
+      </div>
+    </div>
+
+    <!-- Range selector -->
+    <div class="mb-16">
+      <div class="section-label text-center">Target Range</div>
+      <div id="range-bar">
+        <button class="range-btn" data-range="close" onclick="selectRange('close')">R1/R2 Close</button>
+        <button class="range-btn" data-range="mid" onclick="selectRange('mid')">R2 Flee/R3</button>
+        <button class="range-btn" data-range="far" onclick="selectRange('far')">R4+</button>
+        <button class="range-btn stressed" data-range="stressed" onclick="selectRange('stressed')">⚡ Stressed</button>
+      </div>
+    </div>
+
+    <!-- Result panel -->
+    <div id="result-panel" class="hidden fade-in">
+      <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:12px">
+        <div class="die-box" id="die-result"></div>
+        <div style="font-size:10px;color:#556677;font-family:'Courier New',monospace;text-transform:uppercase;letter-spacing:1px">D6 Result</div>
+      </div>
+      <div id="maneuver-emoji"></div>
+      <div id="maneuver-text"></div>
+      <div id="maneuver-note"></div>
+      <button id="reroll-btn" onclick="executeRoll()">↻ Reroll (Not-Quite-As-Stupid Rule)</button>
+      <div class="reroll-hint">Use if maneuver would overlap obstacle or move away from objective</div>
+    </div>
+
+    <!-- Target & Action priorities -->
+    <div class="mt-20" id="priorities-wrap">
+      <div id="target-panel" class="info-panel">
+        <div class="section-label panel-label">Select Target</div>
+        <div id="target-rules"></div>
+      </div>
+      <div id="action-panel" class="info-panel">
+        <div class="section-label panel-label">Action Priority</div>
+        <div id="action-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div id="footer">
+    Fan-made companion app for Heroes of the Aturi Cluster<br>
+    AI data based on HotAC 2nd Ed. v2.07.05 by Josh Derksen,<br>
+    Shaun Tiernan, Claes Sorrenson &amp; Flight Group Alpha
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════════════
+let SHIPS = {};
+let state = {
+  selectedShip: null,
+  selectedSector: null,
+  selectedRange: null,
+  selectedBehavior: "attack",
+  currentManeuver: null,
+  dieResult: null,
+};
+
+const BEHAVIORS = {
+  attack: {
+    label: "Attack",
+    hint: "Target the nearest player ship",
+    targetDesc: [
+      "Target closest player ship in arc",
+      "If none in arc, target closest player ship",
+      "Use ship's target priority to break ties"
+    ]
+  },
+  strike: {
+    label: "Strike",
+    hint: "Target the nearest mission objective (transport, station, satellite, etc.)",
+    targetDesc: [
+      "Target the nearest mission objective",
+      "If no objective, target closest player ship",
+      "Ignore player ships for movement (not attacks)"
+    ]
+  },
+  escort: {
+    label: "Escort",
+    hint: "Target the nearest player ship that threatens the escorted ship",
+    targetDesc: [
+      "Target closest player ship to the escorted ship",
+      "Stay within range 1–3 of the escorted ship if possible",
+      "Use ship's target priority to break ties"
+    ]
+  },
+  flee: {
+    label: "Flee",
+    hint: "Head toward nearest board edge to escape",
+    targetDesc: [
+      "Move toward nearest board edge",
+      "Use straight or bank maneuvers toward edge when possible",
+      "Ship will flee off the board and is removed"
+    ]
+  },
+};
+
+const SECTORS = [
+  { id: "front",      label: "Front",    angle: 0   },
+  { id: "frontRight", label: "Front →",  angle: 45  },
+  { id: "right",      label: "Right",    angle: 90  },
+  { id: "rearRight",  label: "Rear →",   angle: 135 },
+  { id: "rear",       label: "Rear",     angle: 180 },
+  { id: "rearLeft",   label: "← Rear",   angle: 225 },
+  { id: "left",       label: "Left",     angle: 270 },
+  { id: "frontLeft",  label: "← Front",  angle: 315 },
+];
+
+// ═══════════════════════════════════════════════════════════════════
+// HELPERS
+// ═══════════════════════════════════════════════════════════════════
+
+function rollD6() { return Math.floor(Math.random() * 6) + 1; }
+
+// Ship dial data: maps "speed+bearing" to difficulty (b=blue, w=white, r=red)
+// Bearing codes: S=straight, BL=bank left, BR=bank right, TL=turn left, TR=turn right,
+//                K=kturn, SRL=segnor left, SRR=segnor right, TRL=tallon left, TRR=tallon right, ST=stop
+const DIALS = {
+  "TIE/ln Fighter": {
+    "1TL":"w","1TR":"w", "1BL":"w","1BR":"w",
+    "2TL":"w","2TR":"w", "2BL":"b","2BR":"b", "2S":"b",
+    "3TL":"w","3TR":"w", "3BL":"w","3BR":"w", "3S":"b",
+    "4S":"w", "4K":"r",
+    "5S":"w"
+  },
+  "TIE Interceptor": {
+    "1TL":"w","1TR":"w", "1BL":"w","1BR":"w",
+    "2TL":"w","2TR":"w", "2BL":"b","2BR":"b", "2S":"b",
+    "3TL":"w","3TR":"w", "3BL":"b","3BR":"b", "3S":"b",
+    "3K":"r",
+    "4S":"b",
+    "5S":"w", "5K":"r"
+  },
+  "TIE Bomber": {
+    "1BL":"w","1BR":"w", "1S":"b",
+    "2TL":"r","2TR":"r", "2BL":"w","2BR":"w", "2S":"b",
+    "3TL":"w","3TR":"w", "3BL":"w","3BR":"w", "3S":"b",
+    "4S":"w", "4K":"r",
+    "5S":"w"
+  },
+  "TIE Advanced x1": {
+    "1BL":"w","1BR":"w", "1S":"b",
+    "2TL":"w","2TR":"w", "2BL":"b","2BR":"b", "2S":"b",
+    "3TL":"w","3TR":"w", "3BL":"w","3BR":"w", "3S":"b",
+    "3TRL":"r","3TRR":"r",
+    "4S":"w", "4K":"r",
+    "5S":"w"
+  },
+  "TIE Defender": {
+    "1TL":"r","1TR":"r", "1BL":"b","1BR":"b", "1S":"b",
+    "2TL":"w","2TR":"w", "2BL":"b","2BR":"b", "2S":"b",
+    "3TL":"w","3TR":"w", "3BL":"w","3BR":"w", "3S":"b",
+    "4S":"b", "4K":"r",
+    "5S":"w", "5K":"r"
+  },
+  "TIE Phantom": {
+    "1BL":"w","1BR":"w", "1S":"b",
+    "2TL":"w","2TR":"w", "2BL":"w","2BR":"w", "2S":"b",
+    "3TL":"r","3TR":"r", "3BL":"w","3BR":"w", "3S":"b",
+    "3K":"r",
+    "4S":"w", "4K":"r"
+  },
+  "Lambda Shuttle": {
+    "0ST":"r",
+    "1BL":"w","1BR":"w", "1S":"b",
+    "2TL":"r","2TR":"r", "2BL":"w","2BR":"w", "2S":"b",
+    "3S":"b",
+    "3BL":"r","3BR":"r"
+  }
+};
+
+// Convert maneuver code + parsed data into a dial lookup key
+function getDialKey(parsed) {
+  const s = parsed.speed;
+  const t = parsed.type;
+  const d = parsed.direction;
+  if (t === "Straight")      return s + "S";
+  if (t === "Bank")           return s + "B" + (d === "Left" ? "L" : "R");
+  if (t === "Turn")           return s + "T" + (d === "Left" ? "L" : "R");
+  if (t === "K-Turn")         return s + "K";
+  if (t === "Segnor's Loop")  return s + "SR" + (d === "Left" ? "L" : "R");
+  if (t === "Tallon Roll")    return s + "TR" + (d === "Left" ? "L" : "R");
+  if (t === "Stop")           return s + "ST";
+  return null;
+}
+
+// Look up difficulty from ship dial: returns "blue", "white", or "red"
+function getManeuverDifficulty(shipName, parsed) {
+  const dial = DIALS[shipName];
+  if (!dial) return "white";
+  const key = getDialKey(parsed);
+  if (!key) return "white";
+  const d = dial[key];
+  if (d === "b") return "blue";
+  if (d === "r") return "red";
+  return "white";
+}
+
+function parseManeuver(code) {
+  const speed = parseInt(code[0]);
+  const rest = code.slice(1);
+  let type = "", direction = "";
+  if      (rest.includes("SR→")) { type = "Segnor's Loop"; direction = "Right"; }
+  else if (rest.includes("SR←")) { type = "Segnor's Loop"; direction = "Left"; }
+  else if (rest.includes("TR→")) { type = "Tallon Roll";   direction = "Right"; }
+  else if (rest.includes("TR←")) { type = "Tallon Roll";   direction = "Left"; }
+  else if (rest === "K")  { type = "K-Turn"; }
+  else if (rest === "S")  { type = "Straight"; }
+  else if (rest === "B→") { type = "Bank";  direction = "Right"; }
+  else if (rest === "B←") { type = "Bank";  direction = "Left"; }
+  else if (rest === "T→") { type = "Turn";  direction = "Right"; }
+  else if (rest === "T←") { type = "Turn";  direction = "Left"; }
+  else { type = "Stop"; }
+  return { speed, type, direction, code };
+}
+
+function getManeuverEmoji(type) {
+  // Returns character for xwing-miniatures-font
+  const map = {
+    "Straight":"8", "Bank":"9", "Turn":"6",
+    "K-Turn":"2", "Segnor's Loop":"3", "Tallon Roll":"6", "Stop":"5"
+  };
+  return map[type] || "?";
+}
+
+// Get the correct font char accounting for direction (left variants)
+function getManeuverFontChar(type, direction) {
+  switch(type) {
+    case "Straight": return "8";
+    case "Bank":     return direction === "Left" ? "7" : "9";
+    case "Turn":     return direction === "Left" ? "4" : "6";
+    case "K-Turn":   return "2";
+    case "Segnor's Loop": return direction === "Left" ? "1" : "3";
+    case "Tallon Roll":   return direction === "Left" ? "4" : "6"; // uses turn glyph
+    case "Stop":     return "5";
+    default: return "?";
+  }
+}
+
+function $(sel) { return document.querySelector(sel); }
+function $$(sel) { return document.querySelectorAll(sel); }
+
+// ═══════════════════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════════════════
+
+async function init() {
+  generateStars();
+  buildSectorButtons();
+  try {
+    const resp = await fetch("ships.json");
+    SHIPS = await resp.json();
+    buildShipGrid();
+  } catch (e) {
+    console.error("Failed to load ships.json", e);
+    $("#ship-grid").innerHTML = '<div style="color:#ff4444">Error loading ship data. Make sure ships.json is in the same directory.</div>';
+  }
+}
+
+function generateStars() {
+  const sf = $("#starfield");
+  for (let i = 0; i < 80; i++) {
+    const s = document.createElement("div");
+    s.className = "star";
+    const big = Math.random() > 0.9;
+    const sz = big ? "2px" : "1px";
+    Object.assign(s.style, {
+      width: sz, height: sz,
+      background: `rgba(${180+Math.random()*75|0},${200+Math.random()*55|0},255,${(0.3+Math.random()*0.7).toFixed(2)})`,
+      left: (Math.random()*100).toFixed(1)+"%",
+      top: (Math.random()*100).toFixed(1)+"%",
+    });
+    s.style.setProperty("--dur", (2+Math.random()*4).toFixed(1)+"s");
+    s.style.setProperty("--delay", (Math.random()*3).toFixed(1)+"s");
+    sf.appendChild(s);
+  }
+}
+
+function buildSectorButtons() {
+  const wrap = $("#reticle-wrap");
+  const radius = 100;
+  SECTORS.forEach(sec => {
+    const btn = document.createElement("button");
+    btn.className = "sector-btn";
+    btn.dataset.sector = sec.id;
+    btn.textContent = sec.label;
+    const rad = ((sec.angle - 90) * Math.PI) / 180;
+    const x = 140 + Math.cos(rad) * radius;
+    const y = 140 + Math.sin(rad) * radius;
+    btn.style.left = x + "px";
+    btn.style.top = y + "px";
+    btn.addEventListener("click", () => selectSector(sec.id));
+    wrap.appendChild(btn);
+  });
+}
+
+function buildShipGrid() {
+  const grid = $("#ship-grid");
+  grid.innerHTML = "";
+  for (const [name, data] of Object.entries(SHIPS)) {
+    const btn = document.createElement("button");
+    btn.className = "ship-btn";
+    btn.dataset.ship = name;
+    btn.innerHTML = `<div class="icon xws">${data.icon}</div><div>${name}</div>`;
+    btn.addEventListener("click", () => selectShip(name));
+    grid.appendChild(btn);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// INTERACTIONS
+// ═══════════════════════════════════════════════════════════════════
+
+function toggleInfo() {
+  const panels = $("#info-panels");
+  const btn = $("#info-toggle");
+  panels.classList.toggle("hidden");
+  btn.textContent = panels.classList.contains("hidden") ? "Show Quick Reference" : "Hide Quick Reference";
+}
+
+function selectShip(name) {
+  state.selectedShip = name;
+  state.selectedSector = null;
+  state.selectedRange = null;
+  state.selectedBehavior = "attack";
+  state.currentManeuver = null;
+  state.dieResult = null;
+
+  // Update ship buttons
+  $$(".ship-btn").forEach(b => b.classList.toggle("active", b.dataset.ship === name));
+
+  // Show detail area
+  $("#ship-detail").classList.remove("hidden");
+
+  // Update stats
+  renderStats();
+  // Update center icon
+  $("#reticle-center").textContent = SHIPS[name].icon;
+  $("#reticle-center").className = "xws";
+  // Clear selections
+  $$(".sector-btn").forEach(b => b.classList.remove("active"));
+  $$(".range-btn").forEach(b => b.classList.remove("active"));
+  $$(".behavior-btn").forEach(b => b.classList.toggle("active", b.dataset.behavior === "attack"));
+  $("#behavior-hint").textContent = BEHAVIORS.attack.hint;
+  $("#result-panel").classList.add("hidden");
+
+  // Render priorities
+  renderTargetPriority();
+  renderActionPriority();
+}
+
+function renderStats() {
+  const data = SHIPS[state.selectedShip];
+  const stats = [
+    { label: "ATK", value: data.stats.attack, color: "#ff4444", icon: "%" },
+    { label: "AGI", value: data.stats.agility, color: "#44cc44", icon: "^" },
+    { label: "HULL", value: data.stats.hull, color: "#cccc44", icon: "&" },
+    { label: "SHD", value: data.stats.shields, color: "#4488ff", icon: "*" },
+  ];
+  $("#stats-bar").innerHTML = stats.map(s => `
+    <div style="text-align:center">
+      <div class="stat-val" style="color:${s.color};text-shadow:0 0 12px ${s.color}44">${s.value}</div>
+      <div class="stat-lbl"><span class="xwf" style="font-size:12px;color:${s.color}">${s.icon}</span> ${s.label}</div>
+    </div>
+  `).join("");
+}
+
+function selectBehavior(id) {
+  state.selectedBehavior = id;
+  $$(".behavior-btn").forEach(b => b.classList.toggle("active", b.dataset.behavior === id));
+  $("#behavior-hint").textContent = BEHAVIORS[id].hint;
+  renderTargetPriority();
+}
+
+function renderTargetPriority() {
+  const behavior = BEHAVIORS[state.selectedBehavior];
+  const shipRules = SHIPS[state.selectedShip].targetPriority;
+
+  let html = "";
+
+  // Show behavior-specific target instructions
+  if (state.selectedBehavior !== "attack") {
+    html += `<div style="padding:8px 10px;margin-bottom:8px;border-radius:6px;
+      background:rgba(255,80,60,0.06);border:1px solid rgba(255,80,60,0.15)">
+      <div style="font-size:10px;color:#ff8866;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px;font-family:'Courier New',monospace">
+        ${behavior.label} Mode
+      </div>`;
+    behavior.targetDesc.forEach((r, i) => {
+      html += `<div class="target-rule" style="color:#bbaa88">${i+1}. ${r}</div>`;
+    });
+    html += `</div>`;
+  }
+
+  // Always show ship-specific target priority as fallback / reference
+  html += `<div style="font-size:9px;color:#556677;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;font-family:'Courier New',monospace">
+    ${state.selectedBehavior === "attack" ? "Target Priority" : "Ship Default (Attack Mode)"}
+  </div>`;
+  shipRules.forEach((r, i) => {
+    html += `<div class="target-rule">${i+1}. ${r}</div>`;
+  });
+
+  $("#target-rules").innerHTML = html;
+}
+
+function renderActionPriority() {
+  const actions = SHIPS[state.selectedShip].actions;
+  $("#action-list").innerHTML = actions.map((a, i) => `
+    <div class="priority-row">
+      <div class="priority-num ${i===0?'first':'other'}">${i+1}</div>
+      <div class="priority-text ${i===0?'first':'other'}">${a}</div>
+    </div>
+  `).join("");
+}
+
+function selectSector(id) {
+  state.selectedSector = id;
+  $$(".sector-btn").forEach(b => b.classList.toggle("active", b.dataset.sector === id));
+  checkReady();
+}
+
+function selectRange(id) {
+  state.selectedRange = id;
+  $$(".range-btn").forEach(b => b.classList.toggle("active", b.dataset.range === id));
+  checkReady();
+}
+
+function checkReady() {
+  const isStressed = state.selectedRange === "stressed";
+  const ready = state.selectedShip && state.selectedRange && (state.selectedSector || isStressed);
+  if (ready) {
+    executeRoll();
+  } else {
+    $("#result-panel").classList.add("hidden");
+  }
+}
+
+function executeRoll() {
+  if (!state.selectedShip) return;
+  const ship = SHIPS[state.selectedShip];
+  const die = rollD6();
+  let maneuver;
+
+  if (state.selectedRange === "stressed") {
+    maneuver = ship.stressedManeuvers[die - 1];
+  } else if (state.selectedSector && state.selectedRange) {
+    maneuver = ship.maneuvers[state.selectedSector]?.[state.selectedRange]?.[die - 1];
+  } else {
+    return;
+  }
+
+  if (!maneuver) return;
+
+  state.dieResult = die;
+  state.currentManeuver = maneuver;
+  renderResult();
+
+  // Scroll result into view
+  setTimeout(() => {
+    $("#result-panel").scrollIntoView({ behavior: "smooth", block: "center" });
+  }, 100);
+}
+
+function renderResult() {
+  const parsed = parseManeuver(state.currentManeuver);
+  const difficulty = getManeuverDifficulty(state.selectedShip, parsed);
+  const fontChar = getManeuverFontChar(parsed.type, parsed.direction);
+
+  // Difficulty colors matching X-Wing 2nd edition
+  const colorMap = { blue: "#44aaff", white: "#eef2f7", red: "#ff4444" };
+  const glowMap  = { blue: "rgba(68,170,255,0.3)", white: "rgba(200,220,240,0.2)", red: "rgba(255,50,50,0.4)" };
+  const color = colorMap[difficulty];
+  const glow = glowMap[difficulty];
+
+  $("#die-result").textContent = state.dieResult;
+
+  const emoji = $("#maneuver-emoji");
+  emoji.innerHTML = `<span class="xwf">${fontChar}</span>`;
+  emoji.style.color = color;
+  emoji.style.textShadow = `0 0 20px ${glow}`;
+
+  const dirLabel = parsed.direction ? ` ${parsed.direction}` : "";
+  const mText = $("#maneuver-text");
+  mText.textContent = `${parsed.speed} ${parsed.type}${dirLabel}`;
+  mText.style.color = color;
+
+  const note = $("#maneuver-note");
+  if (difficulty === "red") {
+    note.textContent = "RED — No action after (but no stress for AI)";
+    note.style.color = "#ff6666";
+  } else if (difficulty === "blue") {
+    note.textContent = "BLUE — Removes stress token";
+    note.style.color = "#66aaff";
+  } else {
+    note.textContent = `Speed ${parsed.speed} maneuver`;
+    note.style.color = "#667788";
+  }
+
+  $("#result-panel").classList.remove("hidden");
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// BOOT
+// ═══════════════════════════════════════════════════════════════════
+document.addEventListener("DOMContentLoaded", init);
+</script>
+</body>
+</html>
