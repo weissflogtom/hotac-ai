@@ -1,416 +1,3060 @@
 {
   "TIE/ln Fighter": {
     "faction": "empire",
-    "stats": { "attack": 2, "agility": 3, "hull": 3, "shields": 0 },
+    "stats": {
+      "attack": 2,
+      "agility": 3,
+      "hull": 3,
+      "shields": 0
+    },
     "icon": "F",
     "shipClass": "tielnfighter",
+    "initiative": 1,
     "maneuvers": {
       "bullseye": {
-        "close": ["4K", "4K", "2B←", "2B→", "2S", "2S"],
-        "mid":   ["2S", "2S", "2S", "2S", "3S", "3S"],
-        "far":   ["4S", "5S", "5S", "5S", "5S", "5S"],
-        "stressed": ["2B←", "2B←", "2B→", "2B→", "2S", "2S"]
+        "close": [
+          "4K",
+          "4K",
+          "2B\u2190",
+          "2B\u2192",
+          "2S",
+          "2S"
+        ],
+        "mid": [
+          "2S",
+          "2S",
+          "2S",
+          "2S",
+          "3S",
+          "3S"
+        ],
+        "far": [
+          "4S",
+          "5S",
+          "5S",
+          "5S",
+          "5S",
+          "5S"
+        ],
+        "stressed": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2192",
+          "2B\u2192",
+          "2S",
+          "2S"
+        ]
       },
       "arcRight": {
-        "close": ["4K", "4K", "1T→", "1T→", "2B→", "2B→"],
-        "mid":   ["2B→", "2B→", "2B→", "3B→", "3B→", "3S"],
-        "far":   ["3B→", "3B→", "3B→", "3B→", "4S", "4S"],
-        "stressed": ["2B→", "2B→", "2B→", "2S", "2S", "3S"]
-      },
-      "arcLeft": {
-        "close": ["4K", "4K", "1T←", "1T←", "2B←", "2B←"],
-        "mid":   ["2B←", "2B←", "2B←", "3B←", "3B←", "3S"],
-        "far":   ["3B←", "3B←", "3B←", "3B←", "4S", "4S"],
-        "stressed": ["2B←", "2B←", "2B←", "2S", "2S", "3S"]
+        "close": [
+          "4K",
+          "4K",
+          "1T\u2192",
+          "1T\u2192",
+          "2B\u2192",
+          "2B\u2192"
+        ],
+        "mid": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "3B\u2192",
+          "3B\u2192",
+          "3S"
+        ],
+        "far": [
+          "3B\u2192",
+          "3B\u2192",
+          "3B\u2192",
+          "3B\u2192",
+          "4S",
+          "4S"
+        ],
+        "stressed": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2S",
+          "2S",
+          "3S"
+        ]
       },
       "rightSideFront": {
-        "close": ["4K", "1T→", "1T→", "2T→", "2T→", "2T→"],
-        "mid":   ["1T→", "2T→", "2B→", "2B→", "3T→", "3T→"],
-        "far":   ["2T→", "2T→", "2T→", "3T→", "3T→", "3T→"],
-        "stressed": ["1T→", "2B→", "2B→", "2B→", "2B→", "2B→"]
+        "close": [
+          "4K",
+          "1T\u2192",
+          "1T\u2192",
+          "2T\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "mid": [
+          "1T\u2192",
+          "2T\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "3T\u2192",
+          "3T\u2192"
+        ],
+        "far": [
+          "2T\u2192",
+          "2T\u2192",
+          "2T\u2192",
+          "3T\u2192",
+          "3T\u2192",
+          "3T\u2192"
+        ],
+        "stressed": [
+          "1T\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192"
+        ]
       },
-      "leftSidefront": {
-        "close": ["4K", "1T←", "1T←", "2T←", "2T←", "2T←"],
-        "mid":   ["1T←", "2T←", "2B←", "2B←", "3T←", "3T←"],
-        "far":   ["2T←", "2T←", "2T←", "3T←", "3T←", "3T←"],
-        "stressed": ["1T←", "2B←", "2B←", "2B←", "2B←", "2B←"]
-      },      
       "rightSideRear": {
-        "close": ["3K", "1T→", "1T→", "1T→", "2T→", "2T→"],
-        "mid":   ["3K", "3K", "1T→", "1T→", "2T→", "2T→"],
-        "far":   ["3K", "3K", "3K", "1T→", "1T→", "1T→"],
-        "stressed": ["1T→", "2T→", "2B→", "2B→", "2B→"]
-      },      
-      "leftSiderear": {
-        "close": ["3K", "1T←", "1T←", "1T←", "2T←", "2T←"],
-        "mid":   ["3K", "3K", "1T←", "1T←", "2T←", "2T←"],
-        "far":   ["3K", "3K", "3K", "1T←", "1T←", "1T←"],
-        "stressed": ["1T←", "2T←", "2B←", "2B←", "2B←"]
-      },      
+        "close": [
+          "3K",
+          "1T\u2192",
+          "1T\u2192",
+          "1T\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "mid": [
+          "3K",
+          "3K",
+          "1T\u2192",
+          "1T\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "far": [
+          "3K",
+          "3K",
+          "3K",
+          "1T\u2192",
+          "1T\u2192",
+          "1T\u2192"
+        ],
+        "stressed": [
+          "1T\u2192",
+          "2T\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192"
+        ]
+      },
       "rearRight": {
-        "close": ["4K", "4K", "3K", "3K", "2T→", "2T→"],
-        "mid":   ["3K", "3K", "1T→", "3T→", "3T→", "3T→"],
-        "far":   ["3K", "3K", "3K", "3K", "1T→", "1T→"],
-        "stressed": ["2B1", "2B1", "2B1", "2B1", "2B1", "3T→"]
-      },      
+        "close": [
+          "4K",
+          "4K",
+          "3K",
+          "3K",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "mid": [
+          "3K",
+          "3K",
+          "1T\u2192",
+          "3T\u2192",
+          "3T\u2192",
+          "3T\u2192"
+        ],
+        "far": [
+          "3K",
+          "3K",
+          "3K",
+          "3K",
+          "1T\u2192",
+          "1T\u2192"
+        ],
+        "stressed": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "3T\u2192"
+        ]
+      },
       "rearLeft": {
-        "close": ["4K", "4K", "3K", "3K", "2T←", "2T←"],
-        "mid":   ["3K", "3K", "1T←", "3T←", "3T←", "3T←"],
-        "far":   ["3K", "3K", "3K", "3K", "1T←", "1T←"],
-        "stressed": ["2B1", "2B1", "2B1", "2B1", "2B1", "3T←"]
+        "close": [
+          "4K",
+          "4K",
+          "3K",
+          "3K",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "mid": [
+          "3K",
+          "3K",
+          "1T\u2190",
+          "3T\u2190",
+          "3T\u2190",
+          "3T\u2190"
+        ],
+        "far": [
+          "3K",
+          "3K",
+          "3K",
+          "3K",
+          "1T\u2190",
+          "1T\u2190"
+        ],
+        "stressed": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "3T\u2190"
+        ]
+      },
+      "leftSideRear": {
+        "close": [
+          "3K",
+          "1T\u2190",
+          "1T\u2190",
+          "1T\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "mid": [
+          "3K",
+          "3K",
+          "1T\u2190",
+          "1T\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "far": [
+          "3K",
+          "3K",
+          "3K",
+          "1T\u2190",
+          "1T\u2190",
+          "1T\u2190"
+        ],
+        "stressed": [
+          "1T\u2190",
+          "2T\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190"
+        ]
+      },
+      "leftSideFront": {
+        "close": [
+          "4K",
+          "1T\u2190",
+          "1T\u2190",
+          "2T\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "mid": [
+          "1T\u2190",
+          "2T\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "3T\u2190",
+          "3T\u2190"
+        ],
+        "far": [
+          "2T\u2190",
+          "2T\u2190",
+          "2T\u2190",
+          "3T\u2190",
+          "3T\u2190",
+          "3T\u2190"
+        ],
+        "stressed": [
+          "1T\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190"
+        ]
+      },
+      "arcLeft": {
+        "close": [
+          "4K",
+          "4K",
+          "1T\u2190",
+          "1T\u2190",
+          "2B\u2190",
+          "2B\u2190"
+        ],
+        "mid": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "3B\u2190",
+          "3B\u2190",
+          "3S"
+        ],
+        "far": [
+          "3B\u2190",
+          "3B\u2190",
+          "3B\u2190",
+          "3B\u2190",
+          "4S",
+          "4S"
+        ],
+        "stressed": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "3S"
+        ]
       }
-      
-
     },
-    "actions": ["Barrel Roll to avoid arc & get shot", "Barrel Roll to get shot", "Evade if in arc", "Focus"],
-    "targetPriority": ["Closest enemy ship", "If tie: lowest agility", "If tie: most damage cards"]
+    "actions": [
+      {"text": "Resolve Critical", "label": "default"},
+      {"text": "Barrel Roll to avoid Target's arc and still get a shot", "label": "default"},
+      {"text": "Barrel Roll to get a shot", "label": "default"},
+      {"text": "Focus if you have a shot", "label": "default"},
+      {"text": "Barrel Roll to avoid Target's arc", "label": "default"},
+      {"text": "Evade", "label": "default"}
+    ],
+    "targetPriority": [
+      "Nearest Enemy in firing arc",
+      "Nearest Enemy"
+    ],
+    "attackTarget": [
+      "1) Nearest Enemy"
+    ],
+    "fleeThreshold": "0 Health",
+    "fleeAction": "Move at fastest speed toward nearest edge"
   },
   "TIE/in Interceptor": {
     "faction": "empire",
-    "stats": { "attack": 3, "agility": 3, "hull": 3, "shields": 0 },
+    "stats": {
+      "attack": 3,
+      "agility": 3,
+      "hull": 3,
+      "shields": 0
+    },
     "icon": "I",
     "shipClass": "tieinterceptor",
+    "initiative": 1,
     "maneuvers": {
-      "front": {
-        "close": ["1B→", "2S", "2S", "3S", "1B←", "3K"],
-        "mid":   ["2B→", "3S", "2S", "3S", "2B←", "4S"],
-        "far":   ["3B→", "5S", "4S", "5S", "3B←", "4S"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
+      "bullseye": {
+        "close": [
+          "3K",
+          "3K",
+          "2B\u2190",
+          "2B\u2192",
+          "2S",
+          "2S"
+        ],
+        "mid": [
+          "2S",
+          "2S",
+          "2S",
+          "2S",
+          "3S",
+          "3S"
+        ],
+        "far": [
+          "4S",
+          "5S",
+          "5S",
+          "5S",
+          "5S",
+          "5S"
+        ],
+        "stressed": [
+          "2S",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "2B\u2192",
+          "2S"
+        ]
       },
-      "frontRight": {
-        "close": ["1T→", "2B→", "1B→", "2T→", "2S", "3K"],
-        "mid":   ["2T→", "3B→", "2B→", "3B→", "3S", "2B→"],
-        "far":   ["2B→", "5S", "3B→", "4S", "3S", "3B→"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
+      "arcRight": {
+        "close": [
+          "3K",
+          "3SR\u2192",
+          "1T\u2192",
+          "1T\u2192",
+          "2B\u2192",
+          "2B\u2192"
+        ],
+        "mid": [
+          "2B\u2192",
+          "3B\u2192",
+          "2B\u2192",
+          "3B\u2192",
+          "3B\u2192",
+          "3S"
+        ],
+        "far": [
+          "3B\u2192",
+          "4S",
+          "3B\u2192",
+          "3B\u2192",
+          "4S",
+          "4S"
+        ],
+        "stressed": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2S",
+          "2S",
+          "3S"
+        ]
       },
-      "right": {
-        "close": ["2T→", "1T→", "2T→", "1T→", "3T→", "3T→"],
-        "mid":   ["3T→", "2T→", "2T→", "3B→", "2T→", "2B→"],
-        "far":   ["2T→", "3B→", "2B→", "3S", "3B→", "2T→"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
+      "rightSideFront": {
+        "close": [
+          "3SR\u2192",
+          "1T\u2192",
+          "1T\u2192",
+          "2T\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "mid": [
+          "1T\u2192",
+          "2T\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "3T\u2192",
+          "3T\u2192"
+        ],
+        "far": [
+          "2T\u2192",
+          "2T\u2192",
+          "2T\u2192",
+          "3T\u2192",
+          "3T\u2192",
+          "3T\u2192"
+        ],
+        "stressed": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2S",
+          "2S",
+          "3B\u2192"
+        ]
+      },
+      "rightSideRear": {
+        "close": [
+          "3K",
+          "3SR\u2192",
+          "1T\u2192",
+          "1T\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "mid": [
+          "3K",
+          "3SR\u2192",
+          "3K",
+          "1T\u2192",
+          "2T\u2192",
+          "3SR\u2192"
+        ],
+        "far": [
+          "3K",
+          "3SR\u2192",
+          "3K",
+          "1T\u2192",
+          "1T\u2192",
+          "1T\u2192"
+        ],
+        "stressed": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2S",
+          "2S",
+          "3B\u2192"
+        ]
       },
       "rearRight": {
-        "close": ["3SR→", "3T→", "3SR→", "2T→", "3T→", "3K"],
-        "mid":   ["3T→", "3SR→", "3K", "3T→", "2T→", "3SR→"],
-        "far":   ["3T→", "2T→", "3T→", "2T→", "3B→", "3K"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
-      },
-      "rear": {
-        "close": ["3K", "3K", "3SR→", "3K", "3K", "3SR←"],
-        "mid":   ["3K", "3T→", "3K", "3K", "3T←", "3K"],
-        "far":   ["3K", "2T→", "3T→", "3K", "2T←", "3T←"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
-      },
-      "rearLeft": {
-        "close": ["3SR←", "3T←", "3SR←", "2T←", "3T←", "3K"],
-        "mid":   ["3T←", "3SR←", "3K", "3T←", "2T←", "3SR←"],
-        "far":   ["3T←", "2T←", "3T←", "2T←", "3B←", "3K"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
-      },
-      "left": {
-        "close": ["2T←", "1T←", "2T←", "1T←", "3T←", "3T←"],
-        "mid":   ["3T←", "2T←", "2T←", "3B←", "2T←", "2B←"],
-        "far":   ["2T←", "3B←", "2B←", "3S", "3B←", "2T←"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
-      },
-      "frontLeft": {
-        "close": ["1T←", "2B←", "1B←", "2T←", "2S", "3K"],
-        "mid":   ["2T←", "3B←", "2B←", "3B←", "3S", "2B←"],
-        "far":   ["2B←", "5S", "3B←", "4S", "3S", "3B←"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
-      }
-    },
-    "actions": ["Boost+BR to avoid arc & get shot", "Barrel Roll to avoid arc & get shot", "Barrel Roll to get shot", "Evade if in arc", "Focus"],
-    "targetPriority": ["Closest enemy ship", "If tie: lowest agility", "If tie: most damage cards"]
-  },
-  "TIE/sa Bomber": {
-    "faction": "empire",
-    "stats": { "attack": 2, "agility": 2, "hull": 6, "shields": 0 },
-    "icon": "B",
-    "shipClass": "tiesabomber",
-    "maneuvers": {
-      "front": {
-        "close": ["1B→", "2S", "1S", "2S", "1B←", "3K"],
-        "mid":   ["2B→", "3S", "2S", "3S", "2B←", "2S"],
-        "far":   ["2B→", "3S", "3S", "4S", "2B←", "3S"],
-        "stressed": ["2S", "1B→", "2S", "1S", "1B←", "2S"]
-      },
-      "frontRight": {
-        "close": ["1T→", "2B→", "1B→", "2T→", "1S", "3K"],
-        "mid":   ["2T→", "2B→", "2B→", "3B→", "2S", "2B→"],
-        "far":   ["2B→", "3S", "2B→", "4S", "3S", "3B→"],
-        "stressed": ["2S", "1B→", "2S", "1S", "1B←", "2S"]
-      },
-      "right": {
-        "close": ["2T→", "1T→", "1T→", "1T→", "2T→", "2T→"],
-        "mid":   ["2T→", "2T→", "1T→", "2B→", "2T→", "2B→"],
-        "far":   ["2T→", "2B→", "2B→", "3S", "2B→", "2T→"],
-        "stressed": ["2S", "1B→", "2S", "1S", "1B←", "2S"]
-      },
-      "rearRight": {
-        "close": ["2T→", "2T→", "3K", "1T→", "2T→", "3K"],
-        "mid":   ["2T→", "2T→", "3K", "2T→", "1T→", "3K"],
-        "far":   ["2T→", "1T→", "2T→", "2T→", "2B→", "3K"],
-        "stressed": ["2S", "1B→", "2S", "1S", "1B←", "2S"]
-      },
-      "rear": {
-        "close": ["3K", "3K", "2T→", "3K", "3K", "2T←"],
-        "mid":   ["3K", "2T→", "3K", "3K", "2T←", "3K"],
-        "far":   ["3K", "2T→", "2T→", "3K", "2T←", "2T←"],
-        "stressed": ["2S", "1B→", "2S", "1S", "1B←", "2S"]
+        "close": [
+          "3K",
+          "3K",
+          "3SR\u2192",
+          "3SR\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "mid": [
+          "3K",
+          "3K",
+          "3SR\u2192",
+          "3T\u2192",
+          "3T\u2192",
+          "3T\u2192"
+        ],
+        "far": [
+          "3K",
+          "3K",
+          "3K",
+          "3K",
+          "1T\u2192",
+          "1T\u2192"
+        ],
+        "stressed": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2S",
+          "2S",
+          "3B\u2192"
+        ]
       },
       "rearLeft": {
-        "close": ["2T←", "2T←", "3K", "1T←", "2T←", "3K"],
-        "mid":   ["2T←", "2T←", "3K", "2T←", "1T←", "3K"],
-        "far":   ["2T←", "1T←", "2T←", "2T←", "2B←", "3K"],
-        "stressed": ["2S", "1B→", "2S", "1S", "1B←", "2S"]
+        "close": [
+          "3K",
+          "3K",
+          "3SR\u2190",
+          "3SR\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "mid": [
+          "3K",
+          "3K",
+          "3SR\u2190",
+          "3T\u2190",
+          "3T\u2190",
+          "3T\u2190"
+        ],
+        "far": [
+          "3K",
+          "3K",
+          "3K",
+          "3K",
+          "1T\u2190",
+          "1T\u2190"
+        ],
+        "stressed": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "3B\u2190"
+        ]
       },
-      "left": {
-        "close": ["2T←", "1T←", "1T←", "1T←", "2T←", "2T←"],
-        "mid":   ["2T←", "2T←", "1T←", "2B←", "2T←", "2B←"],
-        "far":   ["2T←", "2B←", "2B←", "3S", "2B←", "2T←"],
-        "stressed": ["2S", "1B→", "2S", "1S", "1B←", "2S"]
+      "leftSideRear": {
+        "close": [
+          "3K",
+          "3SR\u2190",
+          "1T\u2190",
+          "1T\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "mid": [
+          "3K",
+          "3SR\u2190",
+          "3K",
+          "1T\u2190",
+          "2T\u2190",
+          "3SR\u2190"
+        ],
+        "far": [
+          "3K",
+          "3SR\u2190",
+          "3K",
+          "1T\u2190",
+          "1T\u2190",
+          "1T\u2190"
+        ],
+        "stressed": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "3B\u2190"
+        ]
       },
-      "frontLeft": {
-        "close": ["1T←", "2B←", "1B←", "2T←", "1S", "3K"],
-        "mid":   ["2T←", "2B←", "2B←", "3B←", "2S", "2B←"],
-        "far":   ["2B←", "3S", "2B←", "4S", "3S", "3B←"],
-        "stressed": ["2S", "1B→", "2S", "1S", "1B←", "2S"]
+      "leftSideFront": {
+        "close": [
+          "3SR\u2190",
+          "1T\u2190",
+          "1T\u2190",
+          "2T\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "mid": [
+          "1T\u2190",
+          "2T\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "3T\u2190",
+          "3T\u2190"
+        ],
+        "far": [
+          "2T\u2190",
+          "2T\u2190",
+          "2T\u2190",
+          "3T\u2190",
+          "3T\u2190",
+          "3T\u2190"
+        ],
+        "stressed": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "3B\u2190"
+        ]
+      },
+      "arcLeft": {
+        "close": [
+          "3K",
+          "3SR\u2190",
+          "1T\u2190",
+          "1T\u2190",
+          "2B\u2190",
+          "2B\u2190"
+        ],
+        "mid": [
+          "2B\u2190",
+          "3B\u2190",
+          "2B\u2190",
+          "3B\u2190",
+          "3B\u2190",
+          "3S"
+        ],
+        "far": [
+          "3B\u2190",
+          "4S",
+          "3B\u2190",
+          "3B\u2190",
+          "4S",
+          "4S"
+        ],
+        "stressed": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "3S"
+        ]
       }
     },
-    "actions": ["Barrel Roll to get shot", "Target Lock if in range", "Focus"],
-    "targetPriority": ["Closest enemy ship", "If tie: lowest agility", "If tie: most damage cards"]
+    "actions": [
+      {"text": "Resolve Critical", "label": "default"},
+      {"text": "Focus \u2192 red Boost or Focus \u2192 red Barrel roll to avoid Target's arc and still get a shot at any enemy", "label": "after-move"},
+      {"text": "Boost \u2192 red Barrel roll or Barrel roll \u2192 red Boost to avoid all enemy arcs", "label": "after-move"},
+      {"text": "Focus if you have a shot", "label": "after-move"},
+      {"text": "Evade", "label": "after-move"},
+      {"text": "Focus \u2192 red Boost or Focus \u2192 red Barrel roll to get a shot", "label": "before-move"},
+      {"text": "Focus", "label": "before-move"}
+    ],
+    "targetPriority": [
+      "Nearest Enemy in firing arc",
+      "Nearest Enemy"
+    ],
+    "attackTarget": [
+      "1) Nearest Enemy"
+    ],
+    "fleeThreshold": "0 Health",
+    "fleeAction": "Move at fastest speed toward nearest edge",
+    "special": "AUTOTHRUSTERS: After you perform an action, you may perform a red Barrel Roll or red Boost action."
   },
   "TIE/x1 Advanced": {
     "faction": "empire",
-    "stats": { "attack": 2, "agility": 3, "hull": 3, "shields": 2 },
+    "stats": {
+      "attack": 2,
+      "agility": 3,
+      "hull": 3,
+      "shields": 2
+    },
     "icon": "A",
     "shipClass": "tieadvancedx1",
+    "initiative": 2,
     "maneuvers": {
-      "front": {
-        "close": ["1B→", "2S", "2S", "3S", "1B←", "4K"],
-        "mid":   ["2B→", "3S", "2S", "4S", "2B←", "3S"],
-        "far":   ["3B→", "4S", "3S", "5S", "3B←", "4S"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
+      "bullseye": {
+        "close": [
+          "4K",
+          "4K",
+          "2B\u2190",
+          "2B\u2192",
+          "2S",
+          "2S"
+        ],
+        "mid": [
+          "2S",
+          "2S",
+          "2S",
+          "2S",
+          "3S",
+          "3S"
+        ],
+        "far": [
+          "4S",
+          "5S",
+          "5S",
+          "5S",
+          "5S",
+          "5S"
+        ],
+        "stressed": [
+          "2S",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "2B\u2192",
+          "2S"
+        ]
       },
-      "frontRight": {
-        "close": ["1T→", "2B→", "1B→", "2T→", "2S", "4K"],
-        "mid":   ["2T→", "3B→", "2B→", "3B→", "3S", "2B→"],
-        "far":   ["2B→", "4S", "3B→", "5S", "3S", "3B→"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
+      "arcRight": {
+        "close": [
+          "4K",
+          "4K",
+          "1T\u2192",
+          "1T\u2192",
+          "2B\u2192",
+          "2B\u2192"
+        ],
+        "mid": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "3B\u2192",
+          "3B\u2192",
+          "3S"
+        ],
+        "far": [
+          "3B\u2192",
+          "3B\u2192",
+          "3B\u2192",
+          "3B\u2192",
+          "4S",
+          "4S"
+        ],
+        "stressed": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2S",
+          "2S",
+          "3S"
+        ]
       },
-      "right": {
-        "close": ["2T→", "1T→", "2T→", "1T→", "2T→", "3T→"],
-        "mid":   ["3T→", "2T→", "2T→", "3B→", "2T→", "2B→"],
-        "far":   ["2T→", "3B→", "2B→", "3S", "3B→", "2T→"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
+      "rightSideFront": {
+        "close": [
+          "4K",
+          "1T\u2192",
+          "1T\u2192",
+          "2T\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "mid": [
+          "1T\u2192",
+          "2T\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "3T\u2192",
+          "3T\u2192"
+        ],
+        "far": [
+          "2T\u2192",
+          "2T\u2192",
+          "2T\u2192",
+          "3T\u2192",
+          "3T\u2192",
+          "3T\u2192"
+        ],
+        "stressed": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2S",
+          "2S",
+          "3B\u2192"
+        ]
+      },
+      "rightSideRear": {
+        "close": [
+          "4K",
+          "3TR\u2192",
+          "1T\u2192",
+          "1T\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "mid": [
+          "4K",
+          "3TR\u2192",
+          "4K",
+          "1T\u2192",
+          "2T\u2192",
+          "3TR\u2192"
+        ],
+        "far": [
+          "4K",
+          "3TR\u2192",
+          "4K",
+          "1T\u2192",
+          "1T\u2192",
+          "1T\u2192"
+        ],
+        "stressed": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2S",
+          "2S",
+          "3B\u2192"
+        ]
       },
       "rearRight": {
-        "close": ["2T→", "3T→", "4K", "2T→", "3T→", "4K"],
-        "mid":   ["3T→", "2T→", "4K", "3T→", "2T→", "4K"],
-        "far":   ["3T→", "2T→", "3T→", "2T→", "3B→", "4K"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
-      },
-      "rear": {
-        "close": ["4K", "4K", "3T→", "4K", "4K", "3T←"],
-        "mid":   ["4K", "3T→", "4K", "4K", "3T←", "4K"],
-        "far":   ["4K", "2T→", "3T→", "4K", "2T←", "3T←"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
+        "close": [
+          "4K",
+          "4K",
+          "3TR\u2192",
+          "3TR\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "mid": [
+          "4K",
+          "4K",
+          "3TR\u2192",
+          "3T\u2192",
+          "3T\u2192",
+          "3T\u2192"
+        ],
+        "far": [
+          "4K",
+          "4K",
+          "4K",
+          "4K",
+          "1T\u2192",
+          "1T\u2192"
+        ],
+        "stressed": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2S",
+          "2S",
+          "3B\u2192"
+        ]
       },
       "rearLeft": {
-        "close": ["2T←", "3T←", "4K", "2T←", "3T←", "4K"],
-        "mid":   ["3T←", "2T←", "4K", "3T←", "2T←", "4K"],
-        "far":   ["3T←", "2T←", "3T←", "2T←", "3B←", "4K"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
+        "close": [
+          "4K",
+          "4K",
+          "3TR\u2190",
+          "3TR\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "mid": [
+          "4K",
+          "4K",
+          "3TR\u2190",
+          "3T\u2190",
+          "3T\u2190",
+          "3T\u2190"
+        ],
+        "far": [
+          "4K",
+          "4K",
+          "4K",
+          "4K",
+          "1T\u2190",
+          "1T\u2190"
+        ],
+        "stressed": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "3B\u2190"
+        ]
       },
-      "left": {
-        "close": ["2T←", "1T←", "2T←", "1T←", "2T←", "3T←"],
-        "mid":   ["3T←", "2T←", "2T←", "3B←", "2T←", "2B←"],
-        "far":   ["2T←", "3B←", "2B←", "3S", "3B←", "2T←"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
+      "leftSideRear": {
+        "close": [
+          "4K",
+          "3TR\u2190",
+          "1T\u2190",
+          "1T\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "mid": [
+          "4K",
+          "3TR\u2190",
+          "4K",
+          "1T\u2190",
+          "2T\u2190",
+          "3TR\u2190"
+        ],
+        "far": [
+          "4K",
+          "3TR\u2190",
+          "4K",
+          "1T\u2190",
+          "1T\u2190",
+          "1T\u2190"
+        ],
+        "stressed": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "3B\u2190"
+        ]
       },
-      "frontLeft": {
-        "close": ["1T←", "2B←", "1B←", "2T←", "2S", "4K"],
-        "mid":   ["2T←", "3B←", "2B←", "3B←", "3S", "2B←"],
-        "far":   ["2B←", "4S", "3B←", "5S", "3S", "3B←"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
+      "leftSideFront": {
+        "close": [
+          "4K",
+          "1T\u2190",
+          "1T\u2190",
+          "2T\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "mid": [
+          "1T\u2190",
+          "2T\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "3T\u2190",
+          "3T\u2190"
+        ],
+        "far": [
+          "2T\u2190",
+          "2T\u2190",
+          "2T\u2190",
+          "3T\u2190",
+          "3T\u2190",
+          "3T\u2190"
+        ],
+        "stressed": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "3B\u2190"
+        ]
+      },
+      "arcLeft": {
+        "close": [
+          "4K",
+          "4K",
+          "1T\u2190",
+          "1T\u2190",
+          "2B\u2190",
+          "2B\u2190"
+        ],
+        "mid": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "3B\u2190",
+          "3B\u2190",
+          "3S"
+        ],
+        "far": [
+          "3B\u2190",
+          "3B\u2190",
+          "3B\u2190",
+          "3B\u2190",
+          "4S",
+          "4S"
+        ],
+        "stressed": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "3S"
+        ]
       }
     },
-    "actions": ["Barrel Roll to avoid arc & get shot", "Target Lock if in range", "Focus"],
-    "targetPriority": ["Closest enemy ship", "If tie: lowest agility", "If tie: most damage cards"]
+    "actions": [
+      {"text": "Resolve Critical", "label": "default"},
+      {"text": "Lock if not in Target's arc", "label": "before-move"},
+      {"text": "Lock", "label": "after-move"},
+      {"text": "Focus \u2192 red Barrel roll to avoid Target arc and still get a shot", "label": "after-move"},
+      {"text": "Focus \u2192 red Barrel roll to get a shot", "label": "after-move"},
+      {"text": "Focus\u2192BR to avoid Target's arc", "label": "after-move"},
+      {"text": "Focus", "label": "default"}
+    ],
+    "targetPriority": [
+      "Locked Enemy within Range 3",
+      "Nearest Enemy in arc with lower Initiative",
+      "Nearest Enemy in arc",
+      "Nearest Enemy"
+    ],
+    "attackTarget": [
+      "1) Ship that is locked (prio: rocket > primary attack)",
+      "2) Nearest Enemy"
+    ],
+    "fleeThreshold": "0 Health",
+    "fleeAction": "If facing edge at R1-2, move at fastest speed or Hyperspace maneuver and roll",
+    "special": "ADVANCED TARGETING COMPUTER: While you perform a primary attack against a locked defender, roll 1 additional die and change 1 hit to a crit."
+  },
+  "TIE/sa Bomber": {
+    "faction": "empire",
+    "stats": {
+      "attack": 2,
+      "agility": 2,
+      "hull": 6,
+      "shields": 0
+    },
+    "icon": "B",
+    "shipClass": "tiesabomber",
+    "initiative": 2,
+    "maneuvers": {
+      "bullseye": {
+        "close": [
+          "3K",
+          "3K",
+          "1B\u2190",
+          "1B\u2192",
+          "1S",
+          "1S"
+        ],
+        "mid": [
+          "2S",
+          "2S",
+          "1S",
+          "2S",
+          "2S",
+          "2S"
+        ],
+        "far": [
+          "3S",
+          "4S",
+          "4S",
+          "4S",
+          "4S",
+          "4S"
+        ],
+        "stressed": [
+          "1S",
+          "1B\u2190",
+          "1S",
+          "1S",
+          "1B\u2192",
+          "1S"
+        ]
+      },
+      "arcRight": {
+        "close": [
+          "3K",
+          "3K",
+          "1T\u2192",
+          "1T\u2192",
+          "1B\u2192",
+          "2B\u2192"
+        ],
+        "mid": [
+          "2B\u2192",
+          "2B\u2192",
+          "1B\u2192",
+          "2B\u2192",
+          "3B\u2192",
+          "2S"
+        ],
+        "far": [
+          "2B\u2192",
+          "3B\u2192",
+          "2B\u2192",
+          "3B\u2192",
+          "3S",
+          "3S"
+        ],
+        "stressed": [
+          "1B\u2192",
+          "1B\u2192",
+          "1B\u2192",
+          "1S",
+          "1S",
+          "2S"
+        ]
+      },
+      "rightSideFront": {
+        "close": [
+          "3K",
+          "1T\u2192",
+          "1T\u2192",
+          "2T\u2192",
+          "2T\u2192",
+          "1T\u2192"
+        ],
+        "mid": [
+          "1T\u2192",
+          "2T\u2192",
+          "1B\u2192",
+          "2B\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "far": [
+          "2T\u2192",
+          "2B\u2192",
+          "1B\u2192",
+          "3S",
+          "2B\u2192",
+          "2T\u2192"
+        ],
+        "stressed": [
+          "1B\u2192",
+          "1B\u2192",
+          "1B\u2192",
+          "1S",
+          "1S",
+          "2S"
+        ]
+      },
+      "rightSideRear": {
+        "close": [
+          "3K",
+          "1T\u2192",
+          "1T\u2192",
+          "1T\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "mid": [
+          "3K",
+          "3K",
+          "1T\u2192",
+          "1T\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "far": [
+          "3K",
+          "3K",
+          "3K",
+          "1T\u2192",
+          "1T\u2192",
+          "1T\u2192"
+        ],
+        "stressed": [
+          "1B\u2192",
+          "1B\u2192",
+          "1B\u2192",
+          "1S",
+          "1S",
+          "2S"
+        ]
+      },
+      "rearRight": {
+        "close": [
+          "3K",
+          "3K",
+          "3K",
+          "3K",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "mid": [
+          "3K",
+          "3K",
+          "1T\u2192",
+          "2T\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "far": [
+          "3K",
+          "3K",
+          "3K",
+          "3K",
+          "1T\u2192",
+          "1T\u2192"
+        ],
+        "stressed": [
+          "1B\u2192",
+          "1B\u2192",
+          "1B\u2192",
+          "1S",
+          "1S",
+          "2T\u2192"
+        ]
+      },
+      "rearLeft": {
+        "close": [
+          "3K",
+          "3K",
+          "3K",
+          "3K",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "mid": [
+          "3K",
+          "3K",
+          "1T\u2190",
+          "2T\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "far": [
+          "3K",
+          "3K",
+          "3K",
+          "3K",
+          "1T\u2190",
+          "1T\u2190"
+        ],
+        "stressed": [
+          "1B\u2190",
+          "1B\u2190",
+          "1B\u2190",
+          "1S",
+          "1S",
+          "2T\u2190"
+        ]
+      },
+      "leftSideRear": {
+        "close": [
+          "3K",
+          "1T\u2190",
+          "1T\u2190",
+          "1T\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "mid": [
+          "3K",
+          "3K",
+          "1T\u2190",
+          "1T\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "far": [
+          "3K",
+          "3K",
+          "3K",
+          "1T\u2190",
+          "1T\u2190",
+          "1T\u2190"
+        ],
+        "stressed": [
+          "1B\u2190",
+          "1B\u2190",
+          "1B\u2190",
+          "1S",
+          "1S",
+          "2S"
+        ]
+      },
+      "leftSideFront": {
+        "close": [
+          "3K",
+          "1T\u2190",
+          "1T\u2190",
+          "2T\u2190",
+          "2T\u2190",
+          "1T\u2190"
+        ],
+        "mid": [
+          "1T\u2190",
+          "2T\u2190",
+          "1B\u2190",
+          "2B\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "far": [
+          "2T\u2190",
+          "2B\u2190",
+          "1B\u2190",
+          "3S",
+          "2B\u2190",
+          "2T\u2190"
+        ],
+        "stressed": [
+          "1B\u2190",
+          "1B\u2190",
+          "1B\u2190",
+          "1S",
+          "1S",
+          "2S"
+        ]
+      },
+      "arcLeft": {
+        "close": [
+          "3K",
+          "3K",
+          "1T\u2190",
+          "1T\u2190",
+          "1B\u2190",
+          "2B\u2190"
+        ],
+        "mid": [
+          "2B\u2190",
+          "2B\u2190",
+          "1B\u2190",
+          "2B\u2190",
+          "3B\u2190",
+          "2S"
+        ],
+        "far": [
+          "2B\u2190",
+          "3B\u2190",
+          "2B\u2190",
+          "3B\u2190",
+          "3S",
+          "3S"
+        ],
+        "stressed": [
+          "1B\u2190",
+          "1B\u2190",
+          "1B\u2190",
+          "1S",
+          "1S",
+          "2S"
+        ]
+      }
+    },
+    "actions": [
+      {"text": "Resolve Critical", "label": "default"},
+      {"text": "Red Reload if no charges on equipped ordnance", "label": "default"},
+      {"text": "Barrel roll (\u2192 red Lock) to avoid Target arc and still get a shot", "label": "default"},
+      {"text": "Barrel roll (\u2192 red Lock) to get a shot", "label": "default"},
+      {"text": "Lock", "label": "default"},
+      {"text": "BR to avoid Target's arc", "label": "default"},
+      {"text": "Focus", "label": "default"}
+    ],
+    "targetPriority": [
+      "Locked Enemy within Range 3",
+      "Nearest Enemy in arc",
+      "Nearest Enemy"
+    ],
+    "attackTarget": [
+      "1) Ship that is locked (prio: torpedoes, rocket, primary attack)",
+      "2) Nearest Enemy (prio: rocket, primary attack)"
+    ],
+    "fleeThreshold": "0 Health",
+    "fleeAction": "Move at fastest speed toward nearest edge",
+    "special": "NIMBLE BOMBER: If you would drop a device using a 1 template, you may use a bank or turn template of the same speed instead."
   },
   "TIE/d Defender": {
     "faction": "empire",
-    "stats": { "attack": 3, "agility": 3, "hull": 3, "shields": 4 },
+    "stats": {
+      "attack": 3,
+      "agility": 3,
+      "hull": 3,
+      "shields": 4
+    },
     "icon": "D",
     "shipClass": "tieddefender",
+    "initiative": 1,
     "maneuvers": {
-      "front": {
-        "close": ["1B→", "2S", "2S", "3S", "1B←", "4K"],
-        "mid":   ["2B→", "4S", "3S", "4S", "2B←", "3S"],
-        "far":   ["3B→", "5S", "4S", "5S", "3B←", "4S"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "3S"]
+      "bullseye": {
+        "close": [
+          "4K",
+          "4K",
+          "1B\u2190",
+          "1B\u2192",
+          "2S",
+          "2S"
+        ],
+        "mid": [
+          "2S",
+          "3S",
+          "2S",
+          "3S",
+          "4S",
+          "4S"
+        ],
+        "far": [
+          "4S",
+          "5S",
+          "5S",
+          "5S",
+          "5S",
+          "5S"
+        ],
+        "stressed": [
+          "2S",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "2B\u2192",
+          "3S"
+        ]
       },
-      "frontRight": {
-        "close": ["1T→", "2B→", "1B→", "2T→", "2S", "4K"],
-        "mid":   ["3T→", "3B→", "2B→", "3B→", "3S", "2B→"],
-        "far":   ["2B→", "5S", "3B→", "4S", "3S", "3B→"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "3S"]
+      "arcRight": {
+        "close": [
+          "4K",
+          "4K",
+          "1T\u2192",
+          "1T\u2192",
+          "2B\u2192",
+          "2B\u2192"
+        ],
+        "mid": [
+          "2B\u2192",
+          "3B\u2192",
+          "2B\u2192",
+          "3B\u2192",
+          "3B\u2192",
+          "3S"
+        ],
+        "far": [
+          "3B\u2192",
+          "4S",
+          "3B\u2192",
+          "3B\u2192",
+          "4S",
+          "4S"
+        ],
+        "stressed": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2S",
+          "2S",
+          "3S"
+        ]
       },
-      "right": {
-        "close": ["3T→", "1T→", "3T→", "1T→", "3T→", "3T→"],
-        "mid":   ["3T→", "3T→", "2T→", "3B→", "3T→", "2B→"],
-        "far":   ["3T→", "3B→", "2B→", "3S", "3B→", "3T→"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "3S"]
+      "rightSideFront": {
+        "close": [
+          "4K",
+          "1T\u2192",
+          "1T\u2192",
+          "3T\u2192",
+          "3T\u2192",
+          "3T\u2192"
+        ],
+        "mid": [
+          "1T\u2192",
+          "3T\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "3T\u2192",
+          "3T\u2192"
+        ],
+        "far": [
+          "3T\u2192",
+          "3B\u2192",
+          "2B\u2192",
+          "3S",
+          "3B\u2192",
+          "3T\u2192"
+        ],
+        "stressed": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2S",
+          "2S",
+          "3B\u2192"
+        ]
+      },
+      "rightSideRear": {
+        "close": [
+          "4K",
+          "3T\u2192",
+          "1T\u2192",
+          "1T\u2192",
+          "3T\u2192",
+          "3T\u2192"
+        ],
+        "mid": [
+          "4K",
+          "3T\u2192",
+          "4K",
+          "3T\u2192",
+          "3T\u2192",
+          "4K"
+        ],
+        "far": [
+          "4K",
+          "3T\u2192",
+          "4K",
+          "3T\u2192",
+          "3T\u2192",
+          "3T\u2192"
+        ],
+        "stressed": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2S",
+          "2S",
+          "3B\u2192"
+        ]
       },
       "rearRight": {
-        "close": ["3T→", "3T→", "4K", "3T→", "3T→", "4K"],
-        "mid":   ["3T→", "3T→", "4K", "3T→", "3T→", "4K"],
-        "far":   ["3T→", "3T→", "3T→", "3T→", "3B→", "4K"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "3S"]
-      },
-      "rear": {
-        "close": ["4K", "4K", "3T→", "4K", "4K", "3T←"],
-        "mid":   ["4K", "3T→", "4K", "4K", "3T←", "4K"],
-        "far":   ["4K", "3T→", "3T→", "4K", "3T←", "3T←"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "3S"]
+        "close": [
+          "4K",
+          "4K",
+          "4K",
+          "4K",
+          "3T\u2192",
+          "3T\u2192"
+        ],
+        "mid": [
+          "4K",
+          "4K",
+          "3T\u2192",
+          "3T\u2192",
+          "3T\u2192",
+          "3T\u2192"
+        ],
+        "far": [
+          "4K",
+          "4K",
+          "4K",
+          "4K",
+          "3T\u2192",
+          "3T\u2192"
+        ],
+        "stressed": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2S",
+          "2S",
+          "3B\u2192"
+        ]
       },
       "rearLeft": {
-        "close": ["3T←", "3T←", "4K", "3T←", "3T←", "4K"],
-        "mid":   ["3T←", "3T←", "4K", "3T←", "3T←", "4K"],
-        "far":   ["3T←", "3T←", "3T←", "3T←", "3B←", "4K"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "3S"]
+        "close": [
+          "4K",
+          "4K",
+          "4K",
+          "4K",
+          "3T\u2190",
+          "3T\u2190"
+        ],
+        "mid": [
+          "4K",
+          "4K",
+          "3T\u2190",
+          "3T\u2190",
+          "3T\u2190",
+          "3T\u2190"
+        ],
+        "far": [
+          "4K",
+          "4K",
+          "4K",
+          "4K",
+          "3T\u2190",
+          "3T\u2190"
+        ],
+        "stressed": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "3B\u2190"
+        ]
       },
-      "left": {
-        "close": ["3T←", "1T←", "3T←", "1T←", "3T←", "3T←"],
-        "mid":   ["3T←", "3T←", "2T←", "3B←", "3T←", "2B←"],
-        "far":   ["3T←", "3B←", "2B←", "3S", "3B←", "3T←"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "3S"]
+      "leftSideRear": {
+        "close": [
+          "4K",
+          "3T\u2190",
+          "1T\u2190",
+          "1T\u2190",
+          "3T\u2190",
+          "3T\u2190"
+        ],
+        "mid": [
+          "4K",
+          "3T\u2190",
+          "4K",
+          "3T\u2190",
+          "3T\u2190",
+          "4K"
+        ],
+        "far": [
+          "4K",
+          "3T\u2190",
+          "4K",
+          "3T\u2190",
+          "3T\u2190",
+          "3T\u2190"
+        ],
+        "stressed": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "3B\u2190"
+        ]
       },
-      "frontLeft": {
-        "close": ["1T←", "2B←", "1B←", "2T←", "2S", "4K"],
-        "mid":   ["3T←", "3B←", "2B←", "3B←", "3S", "2B←"],
-        "far":   ["2B←", "5S", "3B←", "4S", "3S", "3B←"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "3S"]
+      "leftSideFront": {
+        "close": [
+          "4K",
+          "1T\u2190",
+          "1T\u2190",
+          "3T\u2190",
+          "3T\u2190",
+          "3T\u2190"
+        ],
+        "mid": [
+          "1T\u2190",
+          "3T\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "3T\u2190",
+          "3T\u2190"
+        ],
+        "far": [
+          "3T\u2190",
+          "3B\u2190",
+          "2B\u2190",
+          "3S",
+          "3B\u2190",
+          "3T\u2190"
+        ],
+        "stressed": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "3B\u2190"
+        ]
+      },
+      "arcLeft": {
+        "close": [
+          "4K",
+          "4K",
+          "1T\u2190",
+          "1T\u2190",
+          "2B\u2190",
+          "2B\u2190"
+        ],
+        "mid": [
+          "2B\u2190",
+          "3B\u2190",
+          "2B\u2190",
+          "3B\u2190",
+          "3B\u2190",
+          "3S"
+        ],
+        "far": [
+          "3B\u2190",
+          "4S",
+          "3B\u2190",
+          "3B\u2190",
+          "4S",
+          "4S"
+        ],
+        "stressed": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "3S"
+        ]
       }
     },
-    "actions": ["Full Throttle (free evade after 3-5 speed)", "Barrel Roll to avoid arc & get shot", "Target Lock if in range", "Evade if in arc", "Focus"],
-    "targetPriority": ["Closest enemy ship", "If tie: lowest agility", "If tie: most damage cards"]
+    "actions": [
+      {"text": "If FULL THROTTLE Evade", "label": "default"},
+      {"text": "Resolve Critical", "label": "default"},
+      {"text": "Lock if not in enemies arcs or evading", "label": "after-move"},
+      {"text": "Barrel roll or Boost to get a shot, prioritizing range 1 if possible", "label": "after-move"},
+      {"text": "Barrel roll or Boost to avoid Target's arc and still get a shot", "label": "default"},
+      {"text": "Evade if ship is not already evading", "label": "default"},
+      {"text": "Lock if not in any enemies arcs", "label": "default"},
+      {"text": "Focus", "label": "default"}
+    ],
+    "targetPriority": [
+      "Locked Enemy within Range 3",
+      "Nearest Enemy in arc with lower Initiative",
+      "Nearest Enemy in arc",
+      "Nearest Enemy"
+    ],
+    "attackTarget": [
+      "1) Locked Ship (prio max # red dice: gun, rocket, primary attack)",
+      "2) Nearest Enemy (prio max # red dice: gun, primary attack)"
+    ],
+    "fleeThreshold": "0 Health",
+    "fleeAction": "If facing edge at R1-2, move at fastest speed or Hyperspace maneuver and roll",
+    "special": "FULL THROTTLE: After you fully execute a speed 3-5 maneuver, you may perform an Evade action."
   },
   "TIE/ph Phantom": {
     "faction": "empire",
-    "stats": { "attack": 3, "agility": 2, "hull": 3, "shields": 2 },
+    "stats": {
+      "attack": 3,
+      "agility": 2,
+      "hull": 3,
+      "shields": 2
+    },
     "icon": "P",
     "shipClass": "tiephphantom",
+    "initiative": 3,
     "maneuvers": {
-      "front": {
-        "close": ["1B→", "2S", "2S", "3S", "1B←", "4K"],
-        "mid":   ["2B→", "3S", "2S", "3S", "2B←", "3S"],
-        "far":   ["3B→", "4S", "3S", "4S", "3B←", "4S"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
+      "bullseye": {
+        "close": [
+          "3K",
+          "3K",
+          "2B\u2190",
+          "2B\u2192",
+          "2S",
+          "2S"
+        ],
+        "mid": [
+          "2S",
+          "2S",
+          "2S",
+          "2S",
+          "3S",
+          "3S"
+        ],
+        "far": [
+          "3S",
+          "4S",
+          "4S",
+          "4S",
+          "4S",
+          "4S"
+        ],
+        "stressed": [
+          "2S",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "2B\u2192",
+          "2S"
+        ]
       },
-      "frontRight": {
-        "close": ["1T→", "2B→", "1B→", "2T→", "2S", "4K"],
-        "mid":   ["2T→", "3B→", "2B→", "3B→", "3S", "2B→"],
-        "far":   ["2B→", "4S", "3B→", "4S", "3S", "3B→"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
+      "arcRight": {
+        "close": [
+          "3K",
+          "3K",
+          "1T\u2192",
+          "1T\u2192",
+          "2B\u2192",
+          "2B\u2192"
+        ],
+        "mid": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "3B\u2192",
+          "3B\u2192",
+          "3S"
+        ],
+        "far": [
+          "3B\u2192",
+          "3B\u2192",
+          "3B\u2192",
+          "3B\u2192",
+          "4S",
+          "4S"
+        ],
+        "stressed": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2S",
+          "2S",
+          "3S"
+        ]
       },
-      "right": {
-        "close": ["2T→", "1T→", "2T→", "1T→", "2T→", "3T→"],
-        "mid":   ["3T→", "2T→", "2T→", "3B→", "2T→", "2B→"],
-        "far":   ["2T→", "3B→", "2B→", "3S", "3B→", "2T→"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
+      "rightSideFront": {
+        "close": [
+          "3K",
+          "1T\u2192",
+          "1T\u2192",
+          "2T\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "mid": [
+          "1T\u2192",
+          "2T\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "3T\u2192",
+          "3T\u2192"
+        ],
+        "far": [
+          "2T\u2192",
+          "2T\u2192",
+          "2T\u2192",
+          "3T\u2192",
+          "3T\u2192",
+          "3T\u2192"
+        ],
+        "stressed": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2S",
+          "2S",
+          "3B\u2192"
+        ]
+      },
+      "rightSideRear": {
+        "close": [
+          "3K",
+          "3T\u2192",
+          "1T\u2192",
+          "1T\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "mid": [
+          "3K",
+          "3T\u2192",
+          "3K",
+          "1T\u2192",
+          "2T\u2192",
+          "3T\u2192"
+        ],
+        "far": [
+          "3K",
+          "3T\u2192",
+          "3K",
+          "1T\u2192",
+          "1T\u2192",
+          "1T\u2192"
+        ],
+        "stressed": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2S",
+          "2S",
+          "3B\u2192"
+        ]
       },
       "rearRight": {
-        "close": ["2T→", "3T→", "4K", "2T→", "3T→", "4K"],
-        "mid":   ["3T→", "2T→", "4K", "3T→", "2T→", "4K"],
-        "far":   ["3T→", "2T→", "3T→", "2T→", "3B→", "4K"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
-      },
-      "rear": {
-        "close": ["4K", "4K", "3T→", "4K", "4K", "3T←"],
-        "mid":   ["4K", "3T→", "4K", "4K", "3T←", "4K"],
-        "far":   ["4K", "2T→", "3T→", "4K", "2T←", "3T←"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
+        "close": [
+          "3K",
+          "3K",
+          "4K",
+          "4K",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "mid": [
+          "3K",
+          "3K",
+          "3T\u2192",
+          "4K",
+          "3T\u2192",
+          "3T\u2192"
+        ],
+        "far": [
+          "3K",
+          "4K",
+          "3K",
+          "4K",
+          "1T\u2192",
+          "1T\u2192"
+        ],
+        "stressed": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2S",
+          "2S",
+          "3B\u2192"
+        ]
       },
       "rearLeft": {
-        "close": ["2T←", "3T←", "4K", "2T←", "3T←", "4K"],
-        "mid":   ["3T←", "2T←", "4K", "3T←", "2T←", "4K"],
-        "far":   ["3T←", "2T←", "3T←", "2T←", "3B←", "4K"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
+        "close": [
+          "3K",
+          "3K",
+          "4K",
+          "4K",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "mid": [
+          "3K",
+          "3K",
+          "3T\u2190",
+          "4K",
+          "3T\u2190",
+          "3T\u2190"
+        ],
+        "far": [
+          "3K",
+          "4K",
+          "3K",
+          "4K",
+          "1T\u2190",
+          "1T\u2190"
+        ],
+        "stressed": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "3B\u2190"
+        ]
       },
-      "left": {
-        "close": ["2T←", "1T←", "2T←", "1T←", "2T←", "3T←"],
-        "mid":   ["3T←", "2T←", "2T←", "3B←", "2T←", "2B←"],
-        "far":   ["2T←", "3B←", "2B←", "3S", "3B←", "2T←"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
+      "leftSideRear": {
+        "close": [
+          "3K",
+          "3T\u2190",
+          "1T\u2190",
+          "1T\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "mid": [
+          "3K",
+          "3T\u2190",
+          "3K",
+          "1T\u2190",
+          "2T\u2190",
+          "3T\u2190"
+        ],
+        "far": [
+          "3K",
+          "3T\u2190",
+          "3K",
+          "1T\u2190",
+          "1T\u2190",
+          "1T\u2190"
+        ],
+        "stressed": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "3B\u2190"
+        ]
       },
-      "frontLeft": {
-        "close": ["1T←", "2B←", "1B←", "2T←", "2S", "4K"],
-        "mid":   ["2T←", "3B←", "2B←", "3B←", "3S", "2B←"],
-        "far":   ["2B←", "4S", "3B←", "4S", "3S", "3B←"],
-        "stressed": ["2S", "2B→", "2S", "2S", "2B←", "2S"]
+      "leftSideFront": {
+        "close": [
+          "3K",
+          "1T\u2190",
+          "1T\u2190",
+          "2T\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "mid": [
+          "1T\u2190",
+          "2T\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "3T\u2190",
+          "3T\u2190"
+        ],
+        "far": [
+          "2T\u2190",
+          "2T\u2190",
+          "2T\u2190",
+          "3T\u2190",
+          "3T\u2190",
+          "3T\u2190"
+        ],
+        "stressed": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "3B\u2190"
+        ]
+      },
+      "arcLeft": {
+        "close": [
+          "3K",
+          "3K",
+          "1T\u2190",
+          "1T\u2190",
+          "2B\u2190",
+          "2B\u2190"
+        ],
+        "mid": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "3B\u2190",
+          "3B\u2190",
+          "3S"
+        ],
+        "far": [
+          "3B\u2190",
+          "3B\u2190",
+          "3B\u2190",
+          "3B\u2190",
+          "4S",
+          "4S"
+        ],
+        "stressed": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "3S"
+        ]
       }
     },
-    "actions": ["Decloak before activation", "Barrel Roll to avoid arc & get shot", "Evade + Cloak (linked)", "Focus + Cloak (linked)"],
-    "targetPriority": ["Closest enemy ship", "If tie: lowest agility", "If tie: most damage cards"]
+    "actions": [
+      {"text": "Resolve Critical", "label": "default"},
+      {"text": "Cloak if you don't have a shot", "label": "default"},
+      {"text": "Evade if ship is not already evading", "label": "default"},
+      {"text": "Barrel roll to avoid Target arc and still get a shot", "label": "default"},
+      {"text": "Focus", "label": "default"}
+    ],
+    "targetPriority": [
+      "Nearest Enemy in firing arc",
+      "Nearest Enemy"
+    ],
+    "attackTarget": [
+      "1) Nearest Enemy"
+    ],
+    "fleeThreshold": "0 Health",
+    "fleeAction": "If facing edge at R1-2, move at fastest speed or Hyperspace maneuver and roll",
+    "special": "STYGIUM ARRAY: After you decloak, you may perform an Evade action. At the start of the End Phase, you may spend 1 evade token to gain 1 cloak token.",
+    "systemPhase": "1) Roll to Decloak (Reroll if blocked). 2) Perform Focus.",
+    "endPhase": "Spend 1 evade token to gain 1 cloak token"
   },
   "Lambda Shuttle": {
     "faction": "empire",
-    "stats": { "attack": 3, "agility": 1, "hull": 6, "shields": 4 },
+    "stats": {
+      "attack": 3,
+      "agility": 1,
+      "hull": 6,
+      "shields": 4
+    },
     "icon": "l",
     "shipClass": "lambdaclasst4ashuttle",
+    "initiative": 1,
     "maneuvers": {
-      "front": {
-        "close": ["1B→", "1S", "1S", "2S", "1B←", "0S"],
-        "mid":   ["1B→", "2S", "2S", "3S", "1B←", "2S"],
-        "far":   ["2B→", "3S", "2S", "3S", "2B←", "3S"],
-        "stressed": ["1S", "1B→", "2S", "1S", "1B←", "0S"]
+      "bullseye": {
+        "close": [
+          "0S",
+          "0S",
+          "1B\u2190",
+          "1B\u2192",
+          "1S",
+          "1S"
+        ],
+        "mid": [
+          "1S",
+          "1S",
+          "1S",
+          "2S",
+          "2S",
+          "2S"
+        ],
+        "far": [
+          "2S",
+          "3S",
+          "2S",
+          "3S",
+          "3S",
+          "3S"
+        ],
+        "stressed": [
+          "1S",
+          "1B\u2190",
+          "1S",
+          "1S",
+          "1B\u2192",
+          "1S"
+        ]
       },
-      "frontRight": {
-        "close": ["1T→", "1B→", "1B→", "1T→", "1S", "0S"],
-        "mid":   ["1T→", "2B→", "1B→", "2B→", "2S", "1B→"],
-        "far":   ["1B→", "3S", "2B→", "3S", "2S", "2B→"],
-        "stressed": ["1S", "1B→", "2S", "1S", "1B←", "0S"]
+      "arcRight": {
+        "close": [
+          "0S",
+          "0S",
+          "1T\u2192",
+          "1T\u2192",
+          "1B\u2192",
+          "1B\u2192"
+        ],
+        "mid": [
+          "1B\u2192",
+          "1B\u2192",
+          "1B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2S"
+        ],
+        "far": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "3S",
+          "3S"
+        ],
+        "stressed": [
+          "1B\u2192",
+          "1B\u2192",
+          "1B\u2192",
+          "1S",
+          "1S",
+          "1S"
+        ]
       },
-      "right": {
-        "close": ["1T→", "1T→", "1T→", "1T→", "1T→", "2T→"],
-        "mid":   ["2T→", "1T→", "1T→", "2B→", "1T→", "1B→"],
-        "far":   ["1T→", "2B→", "1B→", "2S", "2B→", "1T→"],
-        "stressed": ["1S", "1B→", "2S", "1S", "1B←", "0S"]
+      "rightSideFront": {
+        "close": [
+          "0S",
+          "1T\u2192",
+          "1T\u2192",
+          "2T\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "mid": [
+          "1T\u2192",
+          "2T\u2192",
+          "1B\u2192",
+          "1B\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "far": [
+          "1T\u2192",
+          "2B\u2192",
+          "1B\u2192",
+          "2S",
+          "2B\u2192",
+          "1T\u2192"
+        ],
+        "stressed": [
+          "1B\u2192",
+          "1B\u2192",
+          "1B\u2192",
+          "1S",
+          "1S",
+          "1S"
+        ]
+      },
+      "rightSideRear": {
+        "close": [
+          "0S",
+          "1T\u2192",
+          "1T\u2192",
+          "1T\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "mid": [
+          "0S",
+          "0S",
+          "1T\u2192",
+          "1T\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "far": [
+          "0S",
+          "0S",
+          "0S",
+          "1T\u2192",
+          "1T\u2192",
+          "1T\u2192"
+        ],
+        "stressed": [
+          "1B\u2192",
+          "1B\u2192",
+          "1B\u2192",
+          "1S",
+          "1S",
+          "1S"
+        ]
       },
       "rearRight": {
-        "close": ["1T→", "2T→", "0S", "1T→", "2T→", "0S"],
-        "mid":   ["2T→", "1T→", "0S", "2T→", "1T→", "0S"],
-        "far":   ["2T→", "1T→", "2T→", "1T→", "2B→", "0S"],
-        "stressed": ["1S", "1B→", "2S", "1S", "1B←", "0S"]
-      },
-      "rear": {
-        "close": ["0S", "0S", "2T→", "0S", "0S", "2T←"],
-        "mid":   ["0S", "2T→", "0S", "0S", "2T←", "0S"],
-        "far":   ["0S", "1T→", "2T→", "0S", "1T←", "2T←"],
-        "stressed": ["1S", "1B→", "2S", "1S", "1B←", "0S"]
+        "close": [
+          "0S",
+          "0S",
+          "0S",
+          "0S",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "mid": [
+          "0S",
+          "0S",
+          "1T\u2192",
+          "2T\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "far": [
+          "0S",
+          "0S",
+          "0S",
+          "0S",
+          "1T\u2192",
+          "1T\u2192"
+        ],
+        "stressed": [
+          "1B\u2192",
+          "1B\u2192",
+          "1B\u2192",
+          "1S",
+          "1S",
+          "2T\u2192"
+        ]
       },
       "rearLeft": {
-        "close": ["1T←", "2T←", "0S", "1T←", "2T←", "0S"],
-        "mid":   ["2T←", "1T←", "0S", "2T←", "1T←", "0S"],
-        "far":   ["2T←", "1T←", "2T←", "1T←", "2B←", "0S"],
-        "stressed": ["1S", "1B→", "2S", "1S", "1B←", "0S"]
+        "close": [
+          "0S",
+          "0S",
+          "0S",
+          "0S",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "mid": [
+          "0S",
+          "0S",
+          "1T\u2190",
+          "2T\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "far": [
+          "0S",
+          "0S",
+          "0S",
+          "0S",
+          "1T\u2190",
+          "1T\u2190"
+        ],
+        "stressed": [
+          "1B\u2190",
+          "1B\u2190",
+          "1B\u2190",
+          "1S",
+          "1S",
+          "2T\u2190"
+        ]
       },
-      "left": {
-        "close": ["1T←", "1T←", "1T←", "1T←", "1T←", "2T←"],
-        "mid":   ["2T←", "1T←", "1T←", "2B←", "1T←", "1B←"],
-        "far":   ["1T←", "2B←", "1B←", "2S", "2B←", "1T←"],
-        "stressed": ["1S", "1B→", "2S", "1S", "1B←", "0S"]
+      "leftSideRear": {
+        "close": [
+          "0S",
+          "1T\u2190",
+          "1T\u2190",
+          "1T\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "mid": [
+          "0S",
+          "0S",
+          "1T\u2190",
+          "1T\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "far": [
+          "0S",
+          "0S",
+          "0S",
+          "1T\u2190",
+          "1T\u2190",
+          "1T\u2190"
+        ],
+        "stressed": [
+          "1B\u2190",
+          "1B\u2190",
+          "1B\u2190",
+          "1S",
+          "1S",
+          "1S"
+        ]
       },
-      "frontLeft": {
-        "close": ["1T←", "1B←", "1B←", "1T←", "1S", "0S"],
-        "mid":   ["1T←", "2B←", "1B←", "2B←", "2S", "1B←"],
-        "far":   ["1B←", "3S", "2B←", "3S", "2S", "2B←"],
-        "stressed": ["1S", "1B→", "2S", "1S", "1B←", "0S"]
+      "leftSideFront": {
+        "close": [
+          "0S",
+          "1T\u2190",
+          "1T\u2190",
+          "2T\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "mid": [
+          "1T\u2190",
+          "2T\u2190",
+          "1B\u2190",
+          "1B\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "far": [
+          "1T\u2190",
+          "2B\u2190",
+          "1B\u2190",
+          "2S",
+          "2B\u2190",
+          "1T\u2190"
+        ],
+        "stressed": [
+          "1B\u2190",
+          "1B\u2190",
+          "1B\u2190",
+          "1S",
+          "1S",
+          "1S"
+        ]
+      },
+      "arcLeft": {
+        "close": [
+          "0S",
+          "0S",
+          "1T\u2190",
+          "1T\u2190",
+          "1B\u2190",
+          "1B\u2190"
+        ],
+        "mid": [
+          "1B\u2190",
+          "1B\u2190",
+          "1B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2S"
+        ],
+        "far": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "3S",
+          "3S"
+        ],
+        "stressed": [
+          "1B\u2190",
+          "1B\u2190",
+          "1B\u2190",
+          "1S",
+          "1S",
+          "1S"
+        ]
       }
     },
-    "actions": ["Reinforce (rear if enemies behind, else front)", "Target Lock if in range", "Focus"],
-    "targetPriority": ["Closest enemy ship", "If tie: lowest agility", "If tie: most damage cards"]
+    "actions": [
+      {"text": "Resolve Critical", "label": "default"},
+      {"text": "Focus if you have a shot", "label": "default"},
+      {"text": "Reinforce (prio: front, rear) if within arc of 2 or more Enemies in that full arc", "label": "default"},
+      {"text": "Coordinate nearest friendly ship", "label": "default"},
+      {"text": "red Jam against Target", "label": "default"},
+      {"text": "Focus", "label": "default"}
+    ],
+    "targetPriority": [
+      "Nearest Enemy in firing arc",
+      "Nearest Enemy"
+    ],
+    "attackTarget": [
+      "1.1) Nearest Enemy (prio: gun, font arc, rear arc)",
+      "1.2) If allowed by veteran turret gunner, nearest Enemy (prio: rear arc)" 
+    ],
+    "fleeThreshold": "5 Health",
+    "fleeAction": "If facing edge at R1-2, move at fastest speed or Hyperspace maneuver and roll"
+  },
+  "VT-49 Decimator": {
+    "faction": "empire",
+    "stats": {
+      "attack": 3,
+      "agility": 0,
+      "hull": 12,
+      "shields": 4
+    },
+    "icon": "d",
+    "shipClass": "vt49decimator",
+    "initiative": 2,
+    "maneuvers": {
+      "bullseye": {
+        "close": [
+          "2S",
+          "2S",
+          "1B\u2190",
+          "1B\u2192",
+          "1S",
+          "1S"
+        ],
+        "mid": [
+          "2S",
+          "2S",
+          "1S",
+          "2S",
+          "2S",
+          "2S"
+        ],
+        "far": [
+          "3S",
+          "3S",
+          "2S",
+          "3S",
+          "3S",
+          "3S"
+        ],
+        "stressed": [
+          "1S",
+          "1B\u2190",
+          "1S",
+          "1S",
+          "1B\u2192",
+          "1S"
+        ]
+      },
+      "arcRight": {
+        "close": [
+          "2B\u2192",
+          "2B\u2192",
+          "1T\u2192",
+          "1T\u2192",
+          "1B\u2192",
+          "1B\u2192"
+        ],
+        "mid": [
+          "1B\u2192",
+          "2B\u2192",
+          "1B\u2192",
+          "2B\u2192",
+          "2S",
+          "2S"
+        ],
+        "far": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "3S",
+          "3S"
+        ],
+        "stressed": [
+          "1B\u2192",
+          "1B\u2192",
+          "1B\u2192",
+          "1S",
+          "1S",
+          "2S"
+        ]
+      },
+      "rightSideFront": {
+        "close": [
+          "2T\u2192",
+          "1T\u2192",
+          "1T\u2192",
+          "2T\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "mid": [
+          "1T\u2192",
+          "2T\u2192",
+          "1B\u2192",
+          "2B\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "far": [
+          "1T\u2192",
+          "2B\u2192",
+          "1B\u2192",
+          "2S",
+          "2B\u2192",
+          "1T\u2192"
+        ],
+        "stressed": [
+          "1B\u2192",
+          "1B\u2192",
+          "1B\u2192",
+          "1S",
+          "1S",
+          "2S"
+        ]
+      },
+      "rightSideRear": {
+        "close": [
+          "2T\u2192",
+          "1T\u2192",
+          "1T\u2192",
+          "1T\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "mid": [
+          "2T\u2192",
+          "2T\u2192",
+          "1T\u2192",
+          "1T\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "far": [
+          "2T\u2192",
+          "1T\u2192",
+          "2T\u2192",
+          "1T\u2192",
+          "2B\u2192",
+          "2B\u2192"
+        ],
+        "stressed": [
+          "1B\u2192",
+          "1B\u2192",
+          "1B\u2192",
+          "1S",
+          "1S",
+          "2S"
+        ]
+      },
+      "rearRight": {
+        "close": [
+          "2T\u2192",
+          "2T\u2192",
+          "2T\u2192",
+          "2T\u2192",
+          "1T\u2192",
+          "1T\u2192"
+        ],
+        "mid": [
+          "2T\u2192",
+          "2T\u2192",
+          "1T\u2192",
+          "2T\u2192",
+          "1T\u2192",
+          "1B\u2192"
+        ],
+        "far": [
+          "2T\u2192",
+          "1T\u2192",
+          "2T\u2192",
+          "1T\u2192",
+          "2B\u2192",
+          "2B\u2192"
+        ],
+        "stressed": [
+          "1B\u2192",
+          "1B\u2192",
+          "1B\u2192",
+          "1S",
+          "1S",
+          "2T\u2192"
+        ]
+      },
+      "rearLeft": {
+        "close": [
+          "2T\u2190",
+          "2T\u2190",
+          "2T\u2190",
+          "2T\u2190",
+          "1T\u2190",
+          "1T\u2190"
+        ],
+        "mid": [
+          "2T\u2190",
+          "2T\u2190",
+          "1T\u2190",
+          "2T\u2190",
+          "1T\u2190",
+          "1B\u2190"
+        ],
+        "far": [
+          "2T\u2190",
+          "1T\u2190",
+          "2T\u2190",
+          "1T\u2190",
+          "2B\u2190",
+          "2B\u2190"
+        ],
+        "stressed": [
+          "1B\u2190",
+          "1B\u2190",
+          "1B\u2190",
+          "1S",
+          "1S",
+          "2T\u2190"
+        ]
+      },
+      "leftSideRear": {
+        "close": [
+          "2T\u2190",
+          "1T\u2190",
+          "1T\u2190",
+          "1T\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "mid": [
+          "2T\u2190",
+          "2T\u2190",
+          "1T\u2190",
+          "1T\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "far": [
+          "2T\u2190",
+          "1T\u2190",
+          "2T\u2190",
+          "1T\u2190",
+          "2B\u2190",
+          "2B\u2190"
+        ],
+        "stressed": [
+          "1B\u2190",
+          "1B\u2190",
+          "1B\u2190",
+          "1S",
+          "1S",
+          "2S"
+        ]
+      },
+      "leftSideFront": {
+        "close": [
+          "2T\u2190",
+          "1T\u2190",
+          "1T\u2190",
+          "2T\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "mid": [
+          "1T\u2190",
+          "2T\u2190",
+          "1B\u2190",
+          "2B\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "far": [
+          "1T\u2190",
+          "2B\u2190",
+          "1B\u2190",
+          "2S",
+          "2B\u2190",
+          "1T\u2190"
+        ],
+        "stressed": [
+          "1B\u2190",
+          "1B\u2190",
+          "1B\u2190",
+          "1S",
+          "1S",
+          "2S"
+        ]
+      },
+      "arcLeft": {
+        "close": [
+          "2B\u2190",
+          "2B\u2190",
+          "1T\u2190",
+          "1T\u2190",
+          "1B\u2190",
+          "1B\u2190"
+        ],
+        "mid": [
+          "1B\u2190",
+          "2B\u2190",
+          "1B\u2190",
+          "2B\u2190",
+          "2S",
+          "2S"
+        ],
+        "far": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "3S",
+          "3S"
+        ],
+        "stressed": [
+          "1B\u2190",
+          "1B\u2190",
+          "1B\u2190",
+          "1S",
+          "1S",
+          "2S"
+        ]
+      }
+    },
+    "actions": [
+      {"text": "Resolve Critical", "label": "default"},
+      {"text": "Rotate arc to get a shot if Target is not in your arc", "label": "default"},
+      {"text": "Lock if not in enemies arcs", "label": "before-move"},
+      {"text": "Lock", "label": "after-move"},
+      {"text": "Reinforce (prio: front, rear) if within arc of 2 or more Enemies in that full arc", "label": "default"},
+      {"text": "Focus", "label": "default"}
+    ],
+    "targetPriority": [
+      "Locked Enemy within Range 3",
+      "Nearest Enemy in firing arc",
+      "Nearest Enemy"
+    ],
+    "attackTarget": [
+      "1) Ship that is locked (prio: crit, hit)",
+      "2) Nearest Enemy"
+    ],
+    "fleeThreshold": "0 Health",
+    "fleeAction": "If facing edge at R1-2, move at fastest speed or Hyperspace maneuver and roll"
+  },
+  "TIE Advanced v1": {
+    "faction": "empire",
+    "stats": {
+      "attack": 2,
+      "agility": 3,
+      "hull": 2,
+      "shields": 1
+    },
+    "icon": "R",
+    "shipClass": "tieadvancedprototype",
+    "initiative": 3,
+    "maneuvers": {
+      "bullseye": {
+        "close": [
+          "4K",
+          "4K",
+          "2B\u2190",
+          "2B\u2192",
+          "2S",
+          "2S"
+        ],
+        "mid": [
+          "2S",
+          "2S",
+          "2S",
+          "2S",
+          "3S",
+          "3S"
+        ],
+        "far": [
+          "4S",
+          "5S",
+          "5S",
+          "5S",
+          "5S",
+          "5S"
+        ],
+        "stressed": [
+          "2S",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "2B\u2192",
+          "2S"
+        ]
+      },
+      "arcRight": {
+        "close": [
+          "4K",
+          "4K",
+          "1T\u2192",
+          "1T\u2192",
+          "2B\u2192",
+          "2B\u2192"
+        ],
+        "mid": [
+          "2B\u2192",
+          "3B\u2192",
+          "2B\u2192",
+          "3B\u2192",
+          "3S",
+          "2B\u2192"
+        ],
+        "far": [
+          "3B\u2192",
+          "4S",
+          "3B\u2192",
+          "4S",
+          "4S",
+          "4S"
+        ],
+        "stressed": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2S",
+          "2S",
+          "3S"
+        ]
+      },
+      "rightSideFront": {
+        "close": [
+          "4K",
+          "1T\u2192",
+          "1T\u2192",
+          "2T\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "mid": [
+          "1T\u2192",
+          "2T\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "3T\u2192",
+          "3T\u2192"
+        ],
+        "far": [
+          "2T\u2192",
+          "2T\u2192",
+          "2T\u2192",
+          "3T\u2192",
+          "3T\u2192",
+          "3T\u2192"
+        ],
+        "stressed": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2S",
+          "2S",
+          "3B\u2192"
+        ]
+      },
+      "rightSideRear": {
+        "close": [
+          "4K",
+          "3SR\u2192",
+          "1T\u2192",
+          "1T\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "mid": [
+          "4K",
+          "3SR\u2192",
+          "4K",
+          "1T\u2192",
+          "2T\u2192",
+          "3SR\u2192"
+        ],
+        "far": [
+          "4K",
+          "3SR\u2192",
+          "4K",
+          "1T\u2192",
+          "1T\u2192",
+          "1T\u2192"
+        ],
+        "stressed": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2S",
+          "2S",
+          "3B\u2192"
+        ]
+      },
+      "rearRight": {
+        "close": [
+          "4K",
+          "4K",
+          "3SR\u2192",
+          "3SR\u2192",
+          "2T\u2192",
+          "2T\u2192"
+        ],
+        "mid": [
+          "4K",
+          "4K",
+          "3SR\u2192",
+          "3T\u2192",
+          "3T\u2192",
+          "3SR\u2192"
+        ],
+        "far": [
+          "4K",
+          "4K",
+          "4K",
+          "4K",
+          "1T\u2192",
+          "1T\u2192"
+        ],
+        "stressed": [
+          "2B\u2192",
+          "2B\u2192",
+          "2B\u2192",
+          "2S",
+          "2S",
+          "3B\u2192"
+        ]
+      },
+      "rearLeft": {
+        "close": [
+          "4K",
+          "4K",
+          "3SR\u2190",
+          "3SR\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "mid": [
+          "4K",
+          "4K",
+          "3SR\u2190",
+          "3T\u2190",
+          "3T\u2190",
+          "3SR\u2190"
+        ],
+        "far": [
+          "4K",
+          "4K",
+          "4K",
+          "4K",
+          "1T\u2190",
+          "1T\u2190"
+        ],
+        "stressed": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "3B\u2190"
+        ]
+      },
+      "leftSideRear": {
+        "close": [
+          "4K",
+          "3SR\u2190",
+          "1T\u2190",
+          "1T\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "mid": [
+          "4K",
+          "3SR\u2190",
+          "4K",
+          "1T\u2190",
+          "2T\u2190",
+          "3SR\u2190"
+        ],
+        "far": [
+          "4K",
+          "3SR\u2190",
+          "4K",
+          "1T\u2190",
+          "1T\u2190",
+          "1T\u2190"
+        ],
+        "stressed": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "3B\u2190"
+        ]
+      },
+      "leftSideFront": {
+        "close": [
+          "4K",
+          "1T\u2190",
+          "1T\u2190",
+          "2T\u2190",
+          "2T\u2190",
+          "2T\u2190"
+        ],
+        "mid": [
+          "1T\u2190",
+          "2T\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "3T\u2190",
+          "3T\u2190"
+        ],
+        "far": [
+          "2T\u2190",
+          "2T\u2190",
+          "2T\u2190",
+          "3T\u2190",
+          "3T\u2190",
+          "3T\u2190"
+        ],
+        "stressed": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "3B\u2190"
+        ]
+      },
+      "arcLeft": {
+        "close": [
+          "4K",
+          "4K",
+          "1T\u2190",
+          "1T\u2190",
+          "2B\u2190",
+          "2B\u2190"
+        ],
+        "mid": [
+          "2B\u2190",
+          "3B\u2190",
+          "2B\u2190",
+          "3B\u2190",
+          "3S",
+          "2B\u2190"
+        ],
+        "far": [
+          "3B\u2190",
+          "4S",
+          "3B\u2190",
+          "4S",
+          "4S",
+          "4S"
+        ],
+        "stressed": [
+          "2B\u2190",
+          "2B\u2190",
+          "2B\u2190",
+          "2S",
+          "2S",
+          "3S"
+        ]
+      }
+    },
+    "actions": [
+      {"text": "Resolve Critical", "label": "default"},
+      {"text": "Boost or Barrel roll \u2192 red Focus to avoid Target's arc and still get a shot at any enemy", "label": "after-move"},
+      {"text": "Boost or Barrel roll \u2192 red Focus to get a shot at any enemy", "label": "after-move"},
+      {"text": "Focus if you have a shot", "label": "after-move"},
+      {"text": "Evade", "label": "after-move"},
+      {"text": "Boost or Barrel roll \u2192 red Focus to get a shot", "label": "before-move"},
+      {"text": "Focus", "label": "before-move"}
+    ],
+    "targetPriority": [
+      "Nearest Enemy in arc with lower Initiative",
+      "Nearest Enemy in arc",
+      "Nearest Enemy"
+    ],
+    "attackTarget": [
+      "1) Nearest Enemy (prio: crit, hit to get max # of red dice)"
+    ],
+    "fleeThreshold": "0 Health",
+    "fleeAction": "If facing edge at R1-2, move at fastest speed or Hyperspace maneuver and roll",
+    "special": "INSTINCTIVE AIM: While you perform a special attack, you may spend 1 Force to ignore the Lock or Focus requirement."
   }
 }

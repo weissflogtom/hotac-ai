@@ -233,17 +233,18 @@
     font-size: 10px; font-family: 'Courier New', monospace; font-weight: bold;
     flex-shrink: 0;
   }
-  .priority-num.first {
+  .priority-num.target-moved {
+    background: rgba(80, 180, 120, 0.15); border: 1px solid rgba(80, 180, 120, 0.3); color: #5ccf8a;
+  }
+  .priority-num.target-will-move {
     background: rgba(255,80,60,0.2); border: 1px solid rgba(255,80,60,0.4); color: #ff6644;
   }
   .priority-num.other {
     background: rgba(100,150,200,0.1); border: 1px solid rgba(100,150,200,0.2); color: #6688aa;
   }
   .priority-text {
-    font-size: 12px; font-family: 'Courier New', monospace;
+    font-size: 12px; font-family: 'Courier New', monospace; color: #8899aa;
   }
-  .priority-text.first { color: #ccddee; }
-  .priority-text.other { color: #8899aa; }
   .target-rule {
     font-size: 12px; color: #8899aa;
     font-family: 'Courier New', monospace; padding: 4px 0;
@@ -526,9 +527,9 @@ function rollD6() { return Math.floor(Math.random() * 6) + 1; }
 //                K=kturn, SRL=segnor left, SRR=segnor right, TRL=tallon left, TRR=tallon right, ST=stop
 const DIALS = {
   "TIE/ln Fighter": {
-    "1TL":"w","1TR":"w", 
+    "1TL":"w","1TR":"w",
     "2TL":"w","2TR":"w", "2BL":"b","2BR":"b", "2S":"b",
-    "3TL":"w","3TR":"w", "3BL":"w","3BR":"w", "3S":"b", "3K": "r",
+    "3TL":"w","3TR":"w", "3BL":"w","3BR":"w", "3S":"b", "3K":"r",
     "4S":"w", "4K":"r",
     "5S":"w"
   },
@@ -546,7 +547,7 @@ const DIALS = {
     "4S":"w",
     "5S":"w", "5K": "r"
   },
-  "TIE Advanced x1": {
+  "TIE/x1 Advanced": {
     "1BL":"b","1BR":"b", "1S":"w",
     "2TL":"w","2TR":"w", "2BL":"b","2BR":"b", "2S":"b",
     "3TL":"w","3TR":"w", "3BL":"w","3BR":"w", "3S":"b", "3TRL": "r", "3TRR": "r",
@@ -555,10 +556,10 @@ const DIALS = {
   },
   "TIE/d Defender": {
     "1TL":"r","1TR":"r", "1BL":"b","1BR":"b",
-    "2TL":"r","2TR":"r", "2BL":"w","2BR":"w", "2S":"b", "2K": "r",
+    "2TL":"r","2TR":"r", "2BL":"w","2BR":"w", "2S":"b",
     "3TL":"w","3TR":"w", "3BL":"w","3BR":"w", "3S":"b",
     "4S":"b", "4K":"w",
-    "5S":"b"
+    "5S":"b", "5K":"r"
   },
   "TIE/ph Phantom": {
     "1TL":"w","1TR":"w", "1BL":"w","1BR":"w",
@@ -571,6 +572,18 @@ const DIALS = {
     "1BL":"b","1BR":"b", "1S":"b",
     "2TL":"r","2TR":"r", "2BL":"w","2BR":"w", "2S":"b",
     "3S":"w", "3BL":"r","3BR":"r"
+  },
+  "VT-49 Decimator": {
+    "1TL":"w","1TR":"w", "1BL":"b","1BR":"b", "1S":"b",
+    "2TL":"w","2TR":"w", "2BL":"b","2BR":"b", "2S":"b",
+    "3TL":"r","3TR":"r", "3BL":"w","3BR":"w", "3S":"w"
+  },
+  "TIE Advanced v1": {
+    "1TL":"w","1TR":"w", "1BL":"w","1BR":"w",
+    "2TL":"b","2TR":"b", "2BL":"b","2BR":"b", "2S":"b",
+    "3TL":"w","3TR":"w", "3BL":"w","3BR":"w", "3S":"b", "3SRL":"r","3SRR":"r",
+    "4S":"w", "4K":"r",
+    "5S":"w"
   }
 };
 
@@ -579,13 +592,14 @@ function getDialKey(parsed) {
   const s = parsed.speed;
   const t = parsed.type;
   const d = parsed.direction;
-  if (t === "Straight")      return s + "S";
-  if (t === "Bank")           return s + "B" + (d === "Left" ? "L" : "R");
-  if (t === "Turn")           return s + "T" + (d === "Left" ? "L" : "R");
-  if (t === "K-Turn")         return s + "K";
-  if (t === "Segnor's Loop")  return s + "SR" + (d === "Left" ? "L" : "R");
-  if (t === "Tallon Roll")    return s + "TR" + (d === "Left" ? "L" : "R");
-  if (t === "Stop")           return s + "ST";
+  if (s === 0)                  return "0ST"; // Speed 0 is always a Stop
+  if (t === "Straight")         return s + "S";
+  if (t === "Bank")             return s + "B" + (d === "Left" ? "L" : "R");
+  if (t === "Turn")             return s + "T" + (d === "Left" ? "L" : "R");
+  if (t === "K-Turn")           return s + "K";
+  if (t === "Segnor's Loop")    return s + "SR" + (d === "Left" ? "L" : "R");
+  if (t === "Tallon Roll")      return s + "TR" + (d === "Left" ? "L" : "R");
+  if (t === "Stop")             return s + "ST";
   return null;
 }
 
@@ -605,7 +619,8 @@ function parseManeuver(code) {
   const speed = parseInt(code[0]);
   const rest = code.slice(1);
   let type = "", direction = "";
-  if      (rest.includes("SR→")) { type = "Segnor's Loop"; direction = "Right"; }
+  if (speed === 0)              { type = "Stop"; }
+  else if (rest.includes("SR→")) { type = "Segnor's Loop"; direction = "Right"; }
   else if (rest.includes("SR←")) { type = "Segnor's Loop"; direction = "Left"; }
   else if (rest.includes("TR→")) { type = "Tallon Roll";   direction = "Right"; }
   else if (rest.includes("TR←")) { type = "Tallon Roll";   direction = "Left"; }
@@ -809,10 +824,16 @@ function renderTargetPriority() {
 
 function renderActionPriority() {
   const actions = SHIPS[state.selectedShip].actions;
+  const labelMap = {
+  "default": "other",
+  "before-move": "target-will-move",
+  "after-move": "target-moved"
+};
+
   $("#action-list").innerHTML = actions.map((a, i) => `
     <div class="priority-row">
-      <div class="priority-num ${i===0?'first':'other'}">${i+1}</div>
-      <div class="priority-text ${i===0?'first':'other'}">${a}</div>
+      <div class="priority-num ${labelMap[a.label] ?? "other"}">${i+1}</div>
+      <div class="priority-text">${a.text}</div>
     </div>
   `).join("");
 }
