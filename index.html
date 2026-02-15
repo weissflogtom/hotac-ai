@@ -338,6 +338,47 @@
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: rgba(255,80,60,0.3); border-radius: 2px; }
 
+  /* ── Special ability panel ── */
+  .special-panel {
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px;
+    margin-bottom: 16px;
+  }
+  .special-panel .special-name {
+    font-size: 10px; font-weight: bold;
+    color: #667788; text-transform: uppercase; letter-spacing: 1.5px;
+    font-family: 'Courier New', monospace; margin-bottom: 4px;
+  }
+  .special-panel .special-desc {
+    font-size: 11px; color: #778899;
+    font-family: 'Courier New', monospace; line-height: 1.5;
+  }
+
+  /* ── Action color legend ── */
+  .action-legend {
+    display: flex; gap: 12px; flex-wrap: wrap;
+    margin-bottom: 10px; padding: 4px 2px;
+  }
+  .action-legend-item {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 9px; font-family: 'Courier New', monospace;
+    color: #667788; letter-spacing: 0.5px;
+  }
+  .action-legend-dot {
+    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+  }
+  .action-legend-dot.dot-default {
+    background: rgba(100,150,200,0.3); border: 1px solid rgba(100,150,200,0.5);
+  }
+  .action-legend-dot.dot-after {
+    background: rgba(80,180,120,0.3); border: 1px solid rgba(80,180,120,0.5);
+  }
+  .action-legend-dot.dot-before {
+    background: rgba(255,80,60,0.3); border: 1px solid rgba(255,80,60,0.5);
+  }
+
   /* ── Phase panels ── */
   .phase-panel-inner {
     padding: 10px 12px;
@@ -503,6 +544,7 @@
 
     <!-- Target & Action priorities -->
     <div class="mt-20" id="priorities-wrap">
+      <div id="special-panel" class="special-panel hidden"></div>
       <div id="system-phase-panel" class="info-panel hidden">
         <div class="section-label panel-label" style="color:#aa88ff">System Phase</div>
         <div id="system-phase-content"></div>
@@ -513,6 +555,7 @@
       </div>
       <div id="action-panel" class="info-panel">
         <div class="section-label panel-label">Action Priority</div>
+        <div id="action-legend"></div>
         <div id="action-list"></div>
       </div>
       <div id="attack-target-panel" class="info-panel">
@@ -852,6 +895,7 @@ function selectShip(name) {
   $("#result-panel").classList.add("hidden");
 
   // Render priorities
+  renderSpecial();
   renderTargetPriority();
   renderAttackTarget();
   renderActionPriority();
@@ -934,6 +978,25 @@ function renderTargetPriority() {
   $("#target-rules").innerHTML = html;
 }
 
+function renderSpecial() {
+  const ship = SHIPS[state.selectedShip];
+  const panel = $("#special-panel");
+  if (ship.special) {
+    panel.classList.remove("hidden");
+    // Split on first colon to get ability name and description
+    const colonIdx = ship.special.indexOf(":");
+    if (colonIdx > -1) {
+      const name = ship.special.slice(0, colonIdx).trim();
+      const desc = ship.special.slice(colonIdx + 1).trim();
+      panel.innerHTML = `<div class="special-name">${name}</div><div class="special-desc">${desc}</div>`;
+    } else {
+      panel.innerHTML = `<div class="special-desc">${ship.special}</div>`;
+    }
+  } else {
+    panel.classList.add("hidden");
+  }
+}
+
 function renderActionPriority() {
   const actions = SHIPS[state.selectedShip].actions;
   const labelMap = {
@@ -941,6 +1004,20 @@ function renderActionPriority() {
   "before-move": "target-will-move",
   "after-move": "target-moved"
 };
+
+  const hasConditional = actions.some(a => a.label === "before-move" || a.label === "after-move");
+
+  if (hasConditional) {
+    const hasBefore = actions.some(a => a.label === "before-move");
+    const hasAfter = actions.some(a => a.label === "after-move");
+    let legend = '<div class="action-legend">';
+    if (hasAfter) legend += '<div class="action-legend-item"><span class="action-legend-dot dot-after"></span> only if Target already moved</div>';
+    if (hasBefore) legend += '<div class="action-legend-item"><span class="action-legend-dot dot-before"></span> only if Target not yet moved</div>';
+    legend += '</div>';
+    $("#action-legend").innerHTML = legend;
+  } else {
+    $("#action-legend").innerHTML = "";
+  }
 
   $("#action-list").innerHTML = actions.map((a, i) => `
     <div class="priority-row">
