@@ -497,7 +497,7 @@
       <div id="maneuver-emoji"></div>
       <div id="maneuver-text"></div>
       <div id="maneuver-note"></div>
-      <button id="reroll-btn" onclick="executeRoll()">↻ Reroll (Not-Quite-As-Stupid Rule)</button>
+      <button id="reroll-btn" onclick="executeRoll()">↻ Reroll</button>
       <div class="reroll-hint">Use if maneuver would overlap obstacle or move away from objective</div>
     </div>
 
@@ -511,13 +511,13 @@
         <div class="section-label panel-label">Select Target</div>
         <div id="target-rules"></div>
       </div>
-      <div id="attack-target-panel" class="info-panel">
-        <div class="section-label panel-label">Attack Priority</div>
-        <div id="attack-target-list"></div>
-      </div>
       <div id="action-panel" class="info-panel">
         <div class="section-label panel-label">Action Priority</div>
         <div id="action-list"></div>
+      </div>
+      <div id="attack-target-panel" class="info-panel">
+        <div class="section-label panel-label">Attack Priority</div>
+        <div id="attack-target-list"></div>
       </div>
       <div id="end-phase-panel" class="info-panel hidden">
         <div class="section-label panel-label" style="color:#aa88ff">End Phase</div>
@@ -589,14 +589,14 @@ const BEHAVIORS = {
 
 const SECTORS = [
   { id: "bullseye", label: "Bullseye", angle: 0},
-  { id: "arcRight", label: "Arc →", angle: 40},
-  { id: "rightSideFront", label: "Right ↑", angle: 80},
-  { id: "rightSideRear", label: "Right ↓", angle: 120},
-  { id: "rearRight", label: "Rear →", angle: 160},
-  { id: "rearLeft", label: "← Rear", angle: 200},
-  { id: "leftSiderear", label: "↓ Left", angle: 240},
-  { id: "leftSidefront", label: "↑ Left", angle: 280},
-  { id: "arcLeft", label: "← Arc", angle: 320},
+  { id: "arcRight", label: "Arc→", angle: 40},
+  { id: "rightSideFront", label: "Right↑", angle: 80},
+  { id: "rightSideRear", label: "Right↓", angle: 120},
+  { id: "rearRight", label: "Rear→", angle: 160},
+  { id: "rearLeft", label: "←Rear", angle: 200},
+  { id: "leftSideRear", label: "↓Left", angle: 240},
+  { id: "leftSideFront", label: "↑Left", angle: 280},
+  { id: "arcLeft", label: "←Arc", angle: 320},
 ];
 
 // ═══════════════════════════════════════════════════════════════════
@@ -657,14 +657,15 @@ const DIALS = {
     "3S":"w", "3BL":"r","3BR":"r"
   },
   "VT-49 Decimator": {
-    "1TL":"w","1TR":"w", "1BL":"b","1BR":"b", "1S":"b",
+    "1TL":"r","1TR":"r", "1BL":"b","1BR":"b", "1S":"b",
     "2TL":"w","2TR":"w", "2BL":"b","2BR":"b", "2S":"b",
-    "3TL":"r","3TR":"r", "3BL":"w","3BR":"w", "3S":"w"
+    "3TL":"w","3TR":"w", "3BL":"w","3BR":"w", "3S":"w",
+    "4S": "w"
   },
   "TIE Advanced v1": {
-    "1TL":"w","1TR":"w", "1BL":"w","1BR":"w",
-    "2TL":"b","2TR":"b", "2BL":"b","2BR":"b", "2S":"b",
-    "3TL":"w","3TR":"w", "3BL":"w","3BR":"w", "3S":"b", "3SRL":"r","3SRR":"r",
+    "1TL":"b","1TR":"b", "1BL":"b","1BR":"b",
+    "2TL":"w","2TR":"w", "2BL":"w","2BR":"w", "2S":"b", "2TRL":"r","2TRR":"r",
+    "3TL":"w","3TR":"w", "3BL":"w","3BR":"w", "3S":"b", 
     "4S":"w", "4K":"r",
     "5S":"w"
   }
@@ -736,7 +737,7 @@ function getManeuverFontChar(type, direction) {
     case "Turn":     return direction === "Left" ? "4" : "6";
     case "K-Turn":   return "2";
     case "Segnor's Loop": return direction === "Left" ? "1" : "3";
-    case "Tallon Roll":   return direction === "Left" ? "4" : "6"; // uses turn glyph
+    case "Tallon Roll":   return direction === "Left" ? ":" : ";"; 
     case "Barrel Roll":   return "r";
     case "Stop":     return "5";
     default: return "?";
@@ -956,8 +957,8 @@ function renderAttackTarget() {
     return;
   }
   $("#attack-target-panel").classList.remove("hidden");
-  $("#attack-target-list").innerHTML = rules.map(r => `
-    <div class="target-rule">${r}</div>
+  $("#attack-target-list").innerHTML = rules.map((r, i) => `
+    <div class="target-rule">${i+1}. ${r}</div>
   `).join("");
 }
 
